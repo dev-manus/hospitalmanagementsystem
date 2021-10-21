@@ -46,7 +46,7 @@ class Patient(models.Model):
 class Appointment(models.Model):
     patient = models.OneToOneField(Patient, on_delete=models.DO_NOTHING)
     assigned_doctor = models.OneToOneField(Doctor, on_delete=models.DO_NOTHING)
-    appointment_date = models.DateField(auto_now=True)
+    appointment_date = models.DateField()
     description = models.TextField(max_length=400)
     status = models.BooleanField(default=False)
 
