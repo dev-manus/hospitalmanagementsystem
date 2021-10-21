@@ -40,20 +40,3 @@ def patient_register(request):
 @login_required(login_url='patient-login')
 def patient_dashboard(request):
     return render(request, 'patient/dashboard.html')
-
-
-@login_required(login_url='patient-login')
-def book_appointment(request):
-    appointment_form = PatientAppointmentForm()
-    patient = Patient.objects.get(user_id=request.user.id)
-    view_context = {'appointment_form': appointment_form}
-
-    if(request.method == 'POST'):
-        appointment_form = PatientAppointmentForm(request.POST)
-
-        if appointment_form.is_valid():
-            appointment = appointment_form.save(commit=False)
-            appointment.patient = request.user
-            appointment.save()
-        return HttpResponseRedirect('')
-    return render(request, 'patient/book_appointment.html', context=view_context)
