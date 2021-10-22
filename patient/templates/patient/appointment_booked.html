@@ -1,0 +1,9 @@
+{% extends 'patient/base.html' %} {% block content %}
+<h1>Appointment Booked</h1>
+{% for a in appointments %}
+<div>
+    <h1>{{a.doctor_name}}</h1>
+    <h3>{{a.description}}</h3>
+    <h3>{{a.appointment_date}}</h3>
+</div>
+{% endfor %} {% endblock content %}

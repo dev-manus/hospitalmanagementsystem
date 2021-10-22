@@ -60,5 +60,15 @@ def book_appointment(request):
             appointment.patient_name = request.user.first_name
             appointment.status = False
             appointment.save()
-        return HttpResponseRedirect('/patient/appointment-booked')
+        return HttpResponseRedirect('appointment-booked')
     return render(request, 'patient/book_appointment.html', context=view_context)
+
+
+@login_required(login_url='patient-login')
+def appointment_booked(request):
+    appointments = Appointment.objects.all().filter(patient_id=request.user.id)
+
+    view_context = {
+        'appointments': appointments
+    }
+    return render(request, 'patient/appointment_booked.html', context=view_context)

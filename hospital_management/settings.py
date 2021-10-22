@@ -133,3 +133,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # URL after correct login
 LOGIN_REDIRECT_URL = '/after-login'
+LOGOUT_REDIRECT_URL = ''

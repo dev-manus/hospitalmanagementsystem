@@ -52,6 +52,9 @@ class Appointment(models.Model):
     description = models.TextField(max_length=500)
     status = models.BooleanField(default=False)
 
+    def __str__(self):
+        return f'Patient: {self.patient_id} Doctor: {self.doctor_id}'
+
 
 # Discharge details model
 class DischargeDetails(models.Model):

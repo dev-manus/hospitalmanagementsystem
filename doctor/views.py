@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required
+
+from doctor.models import Doctor
+from patient.models import Appointment
 from .forms import DoctorUserForm, DoctorForm
 from django.http import HttpResponseRedirect
 
@@ -36,3 +39,16 @@ def doctor_register(request):
 @login_required(login_url='doctor-login')
 def doctor_dashboard(request):
     return render(request, 'doctor/dashboard.html')
+
+# View appointments
+
+
+@login_required(login_url='doctor-login')
+def view_appointments(request):
+    doctor = Doctor.objects.get(user_id=request.user.id)
+    appointments = Appointment.objects.all().filter(doctor_id=request.user.id)
+
+    view_context = {
+        'appointments': appointments
+    }
+    return render(request, 'doctor/view_appointments.html', context=view_context)
