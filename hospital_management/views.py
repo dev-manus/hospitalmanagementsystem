@@ -1,6 +1,7 @@
 # Check if the user is doctor, admin or user
 
 from django.shortcuts import redirect
+from django.shortcuts import render
 
 
 def is_admin(user):
@@ -25,3 +26,6 @@ def after_login_view(request):
         return redirect('/patient/dashboard')
     elif is_admin(user):
         return redirect('/admin/dashboard')
+
+def index(request):
+    return render(request, "hospital_management/index.html")
