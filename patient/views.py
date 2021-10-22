@@ -39,7 +39,12 @@ def patient_register(request):
 # Patient's dashboard
 @login_required(login_url='patient-login')
 def patient_dashboard(request):
-    return render(request, 'patient/dashboard.html')
+    patient = Patient.objects.get(user_id=request.user.id)
+
+    view_context = {
+        'patient': patient
+    }
+    return render(request, 'patient/dashboard.html', context=view_context)
 
 # Book appointment
 
@@ -60,15 +65,16 @@ def book_appointment(request):
             appointment.patient_name = request.user.first_name
             appointment.status = False
             appointment.save()
-        return HttpResponseRedirect('appointment-booked')
+        return HttpResponseRedirect('/patient/appointment-booked')
     return render(request, 'patient/book_appointment.html', context=view_context)
 
 
 @login_required(login_url='patient-login')
 def appointment_booked(request):
-    appointments = Appointment.objects.all().filter(patient_id=request.user.id)
+    appointment = Appointment.objects.all().filter(
+        patient_id=request.user.id).last()
 
     view_context = {
-        'appointments': appointments
+        'appointment': appointment
     }
     return render(request, 'patient/appointment_booked.html', context=view_context)

@@ -1,3 +1,21 @@
-{% extends 'patient/base.html' %} {% load widget_tweaks %} {% block content %}
+{% extends "hospital_management/layout.html" %}
+{% load widget_tweaks %}
+{% block body %}
 <h1>Patient Dashboard</h1>
-{% endblock content %}
+<!-- Patient information -->
+<div>
+    <h2>{{patient.user.first_name}} {{patient.user.last_name}}</h2>
+    <p>Contact Number - {{patient.contact_no}}</p>
+    <p>Address - {{patient.address}}</p>
+    <p>Gender - {{patient.sex}}</p>
+    <div>
+        <a href='#'>Appointment History</a><br />
+        <a href='/logout'>Logout</a>
+    </div>
+</div>
+<!-- Other -->
+<div>
+    <a href="/patient/book-appointment">Book appointment</a>
+    <a href="#">See doctors</a>
+</div>
+{% endblock body %}

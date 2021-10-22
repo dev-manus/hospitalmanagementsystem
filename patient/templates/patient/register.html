@@ -1,10 +1,8 @@
-{% extends 'patient/base.html' %} {% load widget_tweaks %} {% block content %}
+{% extends "hospital_management/layout.html" %}
+{% load widget_tweaks %}
+{% block body %}
 <h1>Register Patient</h1>
-<form
-    method="POST"
-    enctype="multipart/form-data"
-    action="{% url 'patient-register' %}"
->
+<form method="POST" enctype="multipart/form-data" action="{% url 'patient-register' %}">
     {% csrf_token %}
     <div>{% render_field user_form.first_name placeholder="First Name" %}</div>
     <div>{% render_field user_form.last_name placeholder="Last Name" %}</div>
@@ -16,4 +14,4 @@
     <div>{% render_field patient_form.sex %}</div>
     <button type="submit">Register</button>
 </form>
-{% endblock content %}
+{% endblock body %}

@@ -1,10 +1,8 @@
-{% extends 'patient/base.html' %} {% load widget_tweaks %} {% block content %}
-<form
-    method="POST"
-    enctype="multipart/form-data"
-    action="{% url 'book-appointment' %}"
->
+{% extends "hospital_management/layout.html" %}
+{% load widget_tweaks %}
+{% block body %}
+<form method="POST" enctype="multipart/form-data" action="{% url 'book-appointment' %}">
     {% csrf_token %} {{ appointment_form }}
     <button type="submit">Submit</button>
 </form>
-{% endblock content %}
+{% endblock body %}

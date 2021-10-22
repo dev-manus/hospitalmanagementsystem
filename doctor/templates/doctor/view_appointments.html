@@ -1,7 +1,17 @@
-{% extends 'doctor/base.html' %} {% block content %} {% for a in appointments %}
+{% extends "hospital_management/layout.html" %}
+{% block body %}
 <div>
-    <h3>{{a.patient_name}}</h3>
-    <h4>{{a.description}}</h4>
-    <h4>{{a.appointment_date}}</h4>
+    <h1>Appointments</h1>
+    {% for a in appointments %}
+    <div>
+        <h3>Patient Name</h3>
+        <p>{{a.patient_name}}</p>
+        <h3>Description</h3>
+        <p>{{a.description}}</p>
+        <h3>Appointment Date</h3>
+        <p>{{a.appointment_date}}</p>
+        <hr>
+    </div>
+    {% endfor %}
 </div>
-{% endfor %} {% endblock content %}
+{% endblock body %}
