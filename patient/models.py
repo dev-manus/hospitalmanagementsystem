@@ -44,14 +44,13 @@ class Patient(models.Model):
 
 # Book appointment model
 class Appointment(models.Model):
-    patient = models.OneToOneField(Patient, on_delete=models.DO_NOTHING)
-    assigned_doctor = models.OneToOneField(Doctor, on_delete=models.DO_NOTHING)
-    appointment_date = models.DateField()
-    description = models.TextField(max_length=400)
+    patient_id = models.PositiveIntegerField(null=True)
+    patient_name = models.CharField(max_length=40, null=True)
+    doctor_id = models.PositiveIntegerField(null=True)
+    doctor_name = models.CharField(max_length=40, null=True)
+    appointment_date = models.DateField(auto_now=True)
+    description = models.TextField(max_length=500)
     status = models.BooleanField(default=False)
-
-    def __str__(self):
-        return f'{self.patient.user.first_name} {self.patient.last_name}'
 
 
 # Discharge details model
