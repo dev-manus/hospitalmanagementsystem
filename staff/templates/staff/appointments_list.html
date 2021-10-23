@@ -1,0 +1,19 @@
+{% extends "hospital_management/layout.html" %}
+{% load static %}
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{% static 'staff/css/doctorlist.css' %}" />
+{% endblock links %}
+
+{% block body %}
+<div class="container">
+    <h1>Unapproved Appointments</h1>
+    {% for a in appointments %}
+    <div class="doctor-card">
+        <p><strong>Patient name</strong>: {{a.patient_name}}</p>
+        <p><strong>Doctor name</strong>: {{a.doctor_name}}</p>
+        <p><strong>Description</strong>: {{a.description}}</p>
+        <button>Approve</button>
+    </div>
+    {% endfor %}
+</div>
+{% endblock body %}

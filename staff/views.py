@@ -53,3 +53,23 @@ def staff_dashboard(request):
         'apppointmentscount': appointmentscount
     }
     return render(request, 'staff/dashboard.html', context)
+
+
+@login_required(login_url='staff-login')
+@user_passes_test(is_admin, login_url='staff-login')
+def unapproved_doctors_list(request):
+    doctors = Doctor.objects.all().filter(status=False)
+    context = {
+        'doctors': doctors
+    }
+    return render(request, 'staff/doctors_list.html', context)
+
+
+@login_required(login_url='staff-login')
+@user_passes_test(is_admin, login_url='staff-login')
+def unapproved_appointments_list(request):
+    appointments = Appointment.objects.all().filter(status=False)
+    context = {
+        'appointments': appointments
+    }
+    return render(request, 'staff/appointments_list.html', context)
