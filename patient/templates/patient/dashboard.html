@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -33,3 +34,26 @@
         </div>
     </body>
 </html>
+=======
+{% extends "hospital_management/layout.html" %}
+{% load widget_tweaks %}
+{% block body %}
+<h1>Patient Dashboard</h1>
+<!-- Patient information -->
+<div>
+    <h2>{{patient.user.first_name}} {{patient.user.last_name}}</h2>
+    <p>Contact Number - {{patient.contact_no}}</p>
+    <p>Address - {{patient.address}}</p>
+    <p>Gender - {{patient.sex}}</p>
+    <div>
+        <a href='#'>Appointment History</a><br />
+        <a href='/logout'>Logout</a>
+    </div>
+</div>
+<!-- Other -->
+<div>
+    <a href="/patient/book-appointment">Book appointment</a>
+    <a href="#">See doctors</a>
+</div>
+{% endblock body %}
+>>>>>>> b5389f7a7998d55b6fae4df1eec5caacf1105e26
