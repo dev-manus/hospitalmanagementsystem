@@ -1,0 +1,145 @@
+.container {
+    display:flex;
+    flex-direction: row;
+    padding:25px;
+}
+.user {
+    display: flex;
+    flex-direction: column;
+    width:20%;
+    padding:15px;
+    border:1px solid gray;
+    align-items: center;
+    border-radius: 15px;
+    background-color: rgb(252, 252, 252);
+    box-shadow: rgb(85, 84, 84) 10px;
+}
+
+.name{
+    font-size: 20px;
+    font-weight: normal;
+    margin-bottom:0;
+}
+
+.img {
+    width:180px;
+    margin:30px;
+    border-radius: 90px;
+}
+
+.type{
+    margin-top:5px;
+    font-size: 14px;
+    color: gray;
+    font-weight: lighter;
+}
+
+.button {
+    margin:10px;
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 15px;
+    border:0;
+
+
+
+}
+
+.logout {
+    margin:20px;
+    padding:5px;
+    border-radius: 15px;
+    background-color: rgb(245, 105, 105);
+    border:white;
+    width:100px;
+    height:30px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform .2s;
+}
+.button:hover {
+    font-weight: 600;
+   
+}
+
+.line {
+    width:200px
+}
+
+.logout:hover{
+    transform: scale(1.1);
+}
+
+.welcome{
+    padding:20px;
+    margin-left:40px;
+}
+.optiondiv{
+    display:flex;
+    flex-direction: row;
+}
+.option1{
+    width:270px;
+    height:270px;
+    padding:40px;
+    border-radius: 60px;
+    margin-top:35px;
+    margin-right: 40px;
+    cursor: pointer;
+    border:0;
+    font-size: 25px;
+    transition: transform .2s;
+    background-color: rgb(255, 217, 217);
+}
+
+.option2{
+    width:270px;
+    height:270px;
+    padding:40px;
+    border-radius: 60px;
+    margin-top:35px;
+    margin-right: 40px;
+    cursor: pointer;
+    border:0;
+    font-size: 25px;
+    transition: transform .2s;
+    background-color: rgb(182, 215, 252);
+}
+
+.option3{
+    width:270px;
+    height:270px;
+    padding:40px;
+    border-radius: 60px;
+    margin-top:35px;
+    margin-right: 40px;
+    cursor: pointer;
+    border:0;
+    font-size: 25px;
+    transition: transform .2s;
+    background-color: rgb(216, 245, 149);
+}
+
+.option1:hover{
+    transform: scale(1.05);
+}
+.option2:hover{
+    transform: scale(1.05);
+}
+.option3:hover{
+    transform: scale(1.05);
+}
+
+.heading{
+    margin-top: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 35px;
+}
+
+.subheading{
+    margin-top :10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
+    font-weight: normal;
+}
+
