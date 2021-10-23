@@ -9,5 +9,8 @@ urlpatterns = [
          name='staff-login'),
     path('unapproved-doctors/', unapproved_doctors_list, name='unapproved-doctors'),
     path('unapproved-appointments/',
-         unapproved_appointments_list, name='unapproved-appointments')
+         unapproved_appointments_list, name='unapproved-appointments'),
+    path('approve-doctor/<int:pk>', approve_doctor, name='approve-doctor'),
+    path('approve-appointment/<int:pk>',
+         approve_appointment, name='approve-appointment'),
 ]

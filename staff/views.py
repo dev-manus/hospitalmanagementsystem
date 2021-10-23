@@ -73,3 +73,23 @@ def unapproved_appointments_list(request):
         'appointments': appointments
     }
     return render(request, 'staff/appointments_list.html', context)
+
+
+@login_required(login_url='staff-login')
+@user_passes_test(is_admin, login_url='staff-login')
+def approve_doctor(request, pk):
+    print(pk)
+    doctor = Doctor.objects.get(user_id=pk)
+    doctor.status = True
+    doctor.save()
+    return redirect('unapproved-doctors')
+
+
+@login_required(login_url='staff-login')
+@user_passes_test(is_admin, login_url='staff-login')
+def approve_appointment(request, pk):
+    print(pk)
+    appointment = Appointment.objects.get(pk=pk)
+    appointment.status = True
+    appointment.save()
+    return redirect('unapproved-appointments')
