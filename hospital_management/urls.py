@@ -24,5 +24,6 @@ urlpatterns = [
     path('after-login/', views.after_login_view),
     path('doctor/', include('doctor.urls')),
     path('patient/', include('patient.urls')),
+    path('staff/', include('staff.urls')),
     path('logout/', LogoutView.as_view(), name='logout')
 ]

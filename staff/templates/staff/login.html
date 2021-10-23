@@ -1,0 +1,33 @@
+{% extends "hospital_management/layout.html" %} 
+{% load widget_tweaks %} 
+{% load crispy_forms_tags %}
+ 
+{% block body %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="container register-form">
+            <div class="form">
+                <div class="note">
+                    <p>Add New Admin To Hospital</p>
+                </div>
+
+                <div class="form-content">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <fieldset class="form-group" >
+                            <legend class="border-bottom mb-4" >
+                                Join Today!
+                            </legend>
+                            {{form}}
+                        </fieldset>
+                        <button type="submit" class="btnSubmit">Submit</button>
+                        <div class="text-center">
+                            Already have an account? <a href="{% url 'staff-login' %}">Login here</a>
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock body %}
