@@ -2,33 +2,60 @@
 
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <title>SJSB hospital</title>
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Product+Sans:400,700"
+        />
+        <link
+            href="{% static 'hospital_management/CSS/index.css' %}"
+            rel="stylesheet"
+        />
+    </head>
 
+    <body>
+        <nav
+            class="
+                navbar
+                navigation-clean
+                navbar-expand-lg navbar-light
+                bg-light
+                sticky-top
+                mt-2
+                shadow
+                p-2
+                mb-5
+                d-flex
+                justify-content-between
+                rounded
+            "
+        >
+            <img
+                src="{% static 'hospital_management/images/logo.png' %}"
+                width="40"
+                height="40"
+                class="d-inline-block align-top"
+                alt=""
+            />
 
-<head>
-  <title>SJSB hospital</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Product+Sans:400,700">
-  <link href="{% static 'hospital_management/CSS/index.css' %}" rel="stylesheet">
-</head>
-
-<body>
-
-
-  <nav class="navbar navigation-clean navbar-expand-lg navbar-light bg-light sticky-top mt-2 shadow p-2 mb-5 d-flex justify-content-between rounded">
-
-    <img src= "{% static 'hospital_management/images/logo.png' %}" width="40" height="40" class="d-inline-block align-top" alt="">
-
-    <a class="navbar-brand" style="font-size: 30px;">
-      
-      San Jose St Bonaventure Hospital
-    </a>
-    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            <a class="navbar-brand" style="font-size: 30px">
+                San Jose St Bonaventure Hospital
+            </a>
+            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button> -->
 
-    <img src= "{% static 'hospital_management/images/menu.png' %}" width="40" height="40" class="d-inline-block align-top" alt="">
-    
-    <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <img
+                src="{% static 'hospital_management/images/menu.png' %}"
+                width="40"
+                height="40"
+                class="d-inline-block align-top"
+                alt=""
+            />
+
+            <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li>1</li>
         <li>1</li>
@@ -37,10 +64,7 @@
         </ul>
 
   </div> -->
-  </nav>
-  {% block body %}
-  {% endblock %}
-</body>
-
-
+        </nav>
+        {% block body %} {% endblock body %}
+    </body>
 </html>

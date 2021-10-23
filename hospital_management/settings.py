@@ -85,6 +85,17 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'hospital-management-system',
+#         'USER': 'postgres',
+#         'PASSWORD': '1208',
+#         'HOST': 'localhost',
+#         'PORT': '5432'
+#     }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -131,3 +142,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # URL after correct login
 LOGIN_REDIRECT_URL = '/after-login'
+LOGOUT_REDIRECT_URL = '/'

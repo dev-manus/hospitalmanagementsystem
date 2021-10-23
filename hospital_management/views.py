@@ -21,7 +21,7 @@ def is_patient(user):
 def after_login_view(request):
     user = request.user
     if is_doctor(user):
-        return redirect('doctor-dashboard')
+        return redirect('/doctor/dashboard')
     elif is_patient(user):
         return redirect('/patient/dashboard')
     elif is_admin(user):

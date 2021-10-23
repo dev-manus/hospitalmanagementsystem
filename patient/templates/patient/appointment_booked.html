@@ -1,0 +1,15 @@
+{% extends "hospital_management/layout.html" %}
+{% block body %}
+<h1>Appointment Booked</h1>
+<div>
+    <h1>{{appointment.doctor_name}}</h1>
+    <h3>{{appointment.description}}</h3>
+    <h3>{{appointment.appointment_date}}</h3>
+    {% if appointment.status == True %}
+    <h3>Status - Booked</h3>
+    {% else %}
+    <h3>Status - Not Booked</h3>
+    {% endif %}
+</div>
+<a href='/patient/dashboard'>Go to dashboard</a>
+{% endblock body %}
