@@ -3,5 +3,4 @@
 
 # Virtualenv
 venv/
-*SS/
 **.fig
