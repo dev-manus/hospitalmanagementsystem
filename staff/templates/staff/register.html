@@ -1,0 +1,61 @@
+{% extends "hospital_management/layout.html" %} 
+{% load widget_tweaks %} 
+{% load crispy_forms_tags %} 
+    
+{% block body %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="container register-form">
+            <div class="form">
+                <div class="note">
+                    <p>Add New Admin To Hospital</p>
+                </div>
+                <div class="form-content">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <fieldset class="form-group" >
+                            <legend class="border-bottom mb-4" >
+                                Join Today!
+                            </legend>
+                            {{form|crispy}}
+                        </fieldset>
+                        <button type="submit" class="btnSubmit">Submit</button>
+                        <div class="text-center">
+                            Already have an account? <a href="{% url 'staff-login' %}">Login here</a>
+                        </div>
+                    </form>
+                    
+                </div>
+                <!-- <div class="form-content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {% render_field form.first_name class="form-control"
+                                placeholder="First Name" %}
+                            </div>
+                            <div class="form-group">
+                                {% render_field form.username class="form-control"
+                                placeholder="Username" %}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {% render_field form.last_name class="form-control"
+                                placeholder="Last Name" %}
+                            </div>
+                            <div class="form-group">
+                                {% render_field form.password class="form-control"
+                                placeholder="Password" %}
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btnSubmit">Submit</button>
+                    <div class="text-center">
+                        Already have an account? <a href="{% url 'staff-login' %}">Login here</a>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </form>
+    {% endblock body %}
+    
