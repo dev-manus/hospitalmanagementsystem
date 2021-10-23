@@ -3,5 +3,7 @@
 
 # Virtualenv
 venv/
-*SS/
+
 **.fig
+Screenshots/
+**.sqlite3

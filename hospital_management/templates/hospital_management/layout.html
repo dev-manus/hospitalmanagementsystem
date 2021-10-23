@@ -16,11 +16,12 @@
 
     <body>
         <nav
+            
             class="
                 navbar
                 navigation-clean
                 navbar-expand-lg navbar-light
-                bg-light
+                bg-yellow
                 sticky-top
                 mt-2
                 shadow
@@ -29,9 +30,11 @@
                 d-flex
                 justify-content-between
                 rounded
+                
             "
         >
             <img
+         
                 src="{% static 'hospital_management/images/logo.png' %}"
                 width="40"
                 height="40"
@@ -39,7 +42,7 @@
                 alt=""
             />
 
-            <a class="navbar-brand" style="font-size: 30px">
+            <a class="navbar-brand" style="font-family : Product Sans; font-size: 30px ;" >
                 San Jose St Bonaventure Hospital
             </a>
             <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -48,6 +51,7 @@
     </button> -->
 
             <img
+            
                 src="{% static 'hospital_management/images/menu.png' %}"
                 width="40"
                 height="40"
@@ -55,15 +59,6 @@
                 alt=""
             />
 
-            <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        </ul>
-
-  </div> -->
         </nav>
         {% block body %} {% endblock body %}
     </body>
