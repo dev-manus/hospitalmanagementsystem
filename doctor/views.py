@@ -58,9 +58,19 @@ def doctor_dashboard(request):
 
 @login_required(login_url='doctor-login')
 def view_appointments(request):
-    doctor = Doctor.objects.get(user_id=request.user.id)
-    appointments = Appointment.objects.all().filter(doctor_id=request.user.id)
+    appointments = Appointment.objects.all().filter(
+        doctor_id=request.user.id).filter(status=True)
     view_context = {
         'appointments': appointments
     }
     return render(request, 'doctor/view_appointments.html', context=view_context)
+
+
+@login_required(login_url='doctor-login')
+def view_patients(request):
+    doctor = Doctor.objects.get(user_id=request.user.id)
+    patients = Patient.objects.all().filter(department=doctor.department)
+    view_context = {
+        'patients': patients
+    }
+    return render(request, 'doctor/patient_list.html', context=view_context)

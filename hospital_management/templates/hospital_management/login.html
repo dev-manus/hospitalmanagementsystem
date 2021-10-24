@@ -1,25 +1,32 @@
 {% extends "hospital_management/layout.html" %}
+{% load static %}
 {% load widget_tweaks %}
+
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{% static 'hospital_management/css/login.css' %}" />
+{% endblock links %}
+
 {% block body %}
-
-<h1>Login</h1>
-
-{% if message %}
+<div class="login-container">
+    <h1>Login</h1>
+    {% if message %}
     <div class="alert alert-danger" role="alert"> {{ message }} </div>
-{% endif %}
+    {% endif %}
 
 
-<form action="{% url 'login' %}" method="post">
-    {% csrf_token %}
-    <label for="login_username">Username</label>
-    <input autofocus class="form-control" id = "login_username" type="text" name="username" placeholder="Jony">
-    <label for="login_pass">Discription</label>
-    <input class="form-control" id = "login_pass" type="password" name="password" placeholder="*********">
-    <input class="btn btn-primary" type="submit" value="Login">
-</form>
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <label for="login_username">Username</label>
+        <input autofocus class="form-control" id="login_username" type="text" name="username" placeholder="Jony">
+        <br />
+        <label for="login_pass">Password</label>
+        <input class="form-control" id="login_pass" type="password" name="password" placeholder="*********">
+        <input class="btn btn-primary" type="submit" value="Login">
+    </form>
 
-<div >
-    Don't have an account? <a class="card-link" href="">Register here.</a>
+    <div>
+        Don't have an account? <a class="card-link" href="">Register here.</a>
+    </div>
 </div>
 <!-- <form method="POST" enctype="multipart/form-data" action="{% url 'login' %}">
     {% csrf_token %}

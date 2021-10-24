@@ -79,7 +79,7 @@ def unapproved_appointments_list(request):
 @user_passes_test(is_admin, login_url='staff-login')
 def approve_doctor(request, pk):
     print(pk)
-    doctor = Doctor.objects.get(user_id=pk)
+    doctor = Doctor.objects.get(pk=pk)
     doctor.status = True
     doctor.save()
     return redirect('unapproved-doctors')

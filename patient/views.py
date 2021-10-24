@@ -32,7 +32,7 @@ def patient_register(request):
             patient_group = Group.objects.get_or_create(name='PATIENT')
             patient_group[0].user_set.add(user)
 
-        return HttpResponseRedirect('/patient/login/')
+        return HttpResponseRedirect('/login/')
     return render(request, 'patient/register.html', context=view_context)
 
 

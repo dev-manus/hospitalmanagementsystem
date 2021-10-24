@@ -28,25 +28,28 @@ def after_login_view(request):
     elif is_patient(user):
         return HttpResponseRedirect('/patient/dashboard')
     elif is_admin(user):
-        return HttpResponseRedirect('/admin/dashboard')
+        return HttpResponseRedirect('/staff/dashboard')
+
 
 def index(request):
     return render(request, "hospital_management/index.html")
 
+
 def book_appointment(request):
     user = request.user
 
-    #user is authonticated, so it can book appointment directly
+    # user is authonticated, so it can book appointment directly
     if user.is_authenticated:
         return redirect('/patient/book-appointment')
 
     # user isn't authonticated, it will be prompted to login first
-    #then from there , he will be directed to book appointment
-    else :
+    # then from there , he will be directed to book appointment
+    else:
         print("here")
-        return render(request, "hospital_management/login.html",{
-            next : "book_appt"
+        return render(request, "hospital_management/login.html", {
+            next: "book_appt"
         })
+
 
 def login_(request):
     if request.method == "POST":
@@ -62,7 +65,7 @@ def login_(request):
             if is_doctor(user):
                 return HttpResponseRedirect('/doctor/dashboard')
             elif is_admin(user):
-                return HttpResponseRedirect('/admin/dashboard')
+                return HttpResponseRedirect('/staff/dashboard')
             return HttpResponseRedirect('/patient/dashboard')
         else:
             return render(request, "hospital_management/login.html", {
@@ -73,5 +76,3 @@ def login_(request):
         return render(request, "hospital_management/login.html", {
             "login_active": True,
         })
-
-    
