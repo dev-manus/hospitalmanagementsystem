@@ -6,12 +6,12 @@
 
 {% block body %}
 <div class="container">
-    <h1>Appointments</h1>
-    {% for a in appointments %}
+    <h1>Doctors</h1>
+    {% for d in doctors %}
     <div class="doctor-card">
-        <p><strong>Patient name</strong>: {{a.patient_name}}</p>
-        <p><strong>Appointment Date: </strong>{{a.appointment_date}}</p>
-        <p><strong>Description</strong>: {{a.description}}</p>
+        <h2>{{d.user.first_name}} {{d.user.last_name}}</h2>
+        <p><strong>Department</strong>: {{d.department}}</p>
+        <p><strong>Tenure</strong>: {{d.tenure}}</p>
     </div>
     {% endfor %}
 </div>
