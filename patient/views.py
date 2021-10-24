@@ -1,10 +1,14 @@
 from django.shortcuts import render
 from django.contrib.auth.models import Group
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.http import HttpResponseRedirect
 from .forms import *
 
 # Create your views here.
+
+
+def is_patient(user):
+    return user.groups.filter(name='PATIENT').exists()
 
 
 def patient_register(request):
@@ -38,6 +42,7 @@ def patient_register(request):
 
 # Patient's dashboard
 @login_required(login_url='patient-login')
+@user_passes_test(is_patient, login_url='patient-login')
 def patient_dashboard(request):
     patient = Patient.objects.get(user_id=request.user.id)
 
@@ -50,6 +55,7 @@ def patient_dashboard(request):
 
 
 @login_required(login_url='patient-login')
+@user_passes_test(is_patient, login_url='patient-login')
 def book_appointment(request):
     appointment_form = BookAppointment()
     view_context = {'appointment_form': appointment_form}
@@ -70,6 +76,7 @@ def book_appointment(request):
 
 
 @login_required(login_url='patient-login')
+@user_passes_test(is_patient, login_url='patient-login')
 def appointment_booked(request):
     appointment = Appointment.objects.all().filter(
         patient_id=request.user.id).last()
@@ -78,3 +85,26 @@ def appointment_booked(request):
         'appointment': appointment
     }
     return render(request, 'patient/appointment_booked.html', context=view_context)
+
+
+@login_required(login_url='patient-login')
+@user_passes_test(is_patient, login_url='patient-login')
+def appointment_history(request):
+    appointments = Appointment.objects.all().filter(
+        patient_id=request.user.id).filter(status=True)
+
+    view_context = {
+        'appointments': appointments
+    }
+    return render(request, 'patient/appointment_history.html', context=view_context)
+
+
+@login_required(login_url='patient-login')
+@user_passes_test(is_patient, login_url='patient-login')
+def get_all_doctors(request):
+    doctors = Doctor.objects.all().filter(status=True)
+
+    view_context = {
+        'doctors': doctors
+    }
+    return render(request, 'patient/doctors_list.html', context=view_context)

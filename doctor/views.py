@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.models import Group
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 from doctor.models import Doctor
 from patient.models import Appointment, Patient
@@ -8,6 +8,10 @@ from .forms import DoctorUserForm, DoctorForm
 from django.http import HttpResponseRedirect
 
 # Create your views here.
+
+
+def is_doctor(user):
+    return user.groups.filter(name='DOCTOR').exists()
 
 
 def doctor_register(request):
@@ -37,6 +41,7 @@ def doctor_register(request):
 
 # Doctor's dashboard
 @login_required(login_url='doctor-login')
+@user_passes_test(is_doctor, login_url='doctor-login')
 def doctor_dashboard(request):
     doctor = Doctor.objects.get(user_id=request.user.id)
     appointments = Appointment.objects.filter(doctor_id=request.user.id)
@@ -57,6 +62,7 @@ def doctor_dashboard(request):
 
 
 @login_required(login_url='doctor-login')
+@user_passes_test(is_doctor, login_url='doctor-login')
 def view_appointments(request):
     appointments = Appointment.objects.all().filter(
         doctor_id=request.user.id).filter(status=True)
@@ -67,6 +73,7 @@ def view_appointments(request):
 
 
 @login_required(login_url='doctor-login')
+@user_passes_test(is_doctor, login_url='doctor-login')
 def view_patients(request):
     doctor = Doctor.objects.get(user_id=request.user.id)
     patients = Patient.objects.all().filter(department=doctor.department)
