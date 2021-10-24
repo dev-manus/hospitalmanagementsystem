@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.base import Model
 from doctor.models import Doctor
 
 # Create your models here.
@@ -28,7 +29,7 @@ class Patient(models.Model):
     department = models.CharField(max_length=30,
                                   choices=departments, default='General Physician')
     status = models.BooleanField(default=False)
-    assigned_doctor = models.OneToOneField(
+    assigned_doctor = models.ForeignKey(
         Doctor, null=True, on_delete=models.CASCADE)
 
     @property
