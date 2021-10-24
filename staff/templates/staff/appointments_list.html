@@ -12,7 +12,7 @@
         <p><strong>Patient name</strong>: {{a.patient_name}}</p>
         <p><strong>Doctor name</strong>: {{a.doctor_name}}</p>
         <p><strong>Description</strong>: {{a.description}}</p>
-        <button><a href="/staff/approve-appointment/{{ a.pk }}">Approve</a></button>
+        <a href="/staff/approve-doctor/{{ d.pk }}"></a>
     </div>
     {% endfor %}
 </div>

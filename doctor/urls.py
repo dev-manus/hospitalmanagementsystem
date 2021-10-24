@@ -7,5 +7,6 @@ urlpatterns = [
     path('login/', LoginView.as_view(template_name='doctor/login.html'),
          name='doctor-login'),
     path('dashboard/', doctor_dashboard, name='doctor-dashboard'),
-    path('view-appointments/', view_appointments, name='view-appointments')
+    path('view-appointments/', view_appointments, name='view-appointments'),
+    path('view-patients/', view_patients, name='view_patients')
 ]

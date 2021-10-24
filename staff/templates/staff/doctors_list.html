@@ -12,7 +12,7 @@
         <h2>{{d.user.first_name}} {{d.user.last_name}}</h2>
         <p><strong>Department</strong>: {{d.department}}</p>
         <p><strong>Tenure</strong>: {{d.tenure}}</p>
-        <button><a href="/staff/approve-doctor/{{ d.pk }}">Approve</a></button>
+        <a href="/staff/approve-doctor/{{ d.pk }}"><button>Approve</button></a>
     </div>
     {% endfor %}
 </div>

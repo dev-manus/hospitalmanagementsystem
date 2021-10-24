@@ -1,54 +1,62 @@
 {% extends "hospital_management/layout.html" %}
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{% static 'doctor/css/dashboard.css' %}" />
+{% endblock links %}
+
 {% block body %}
-<h1>Doctor's dashboard</h1>
-<!-- Doctor's information -->
-<div>
-    <h2>{{doctor.user.first_name}} {{doctor.user.last_name}}</h2>
-    <p>Department - {{doctor.department}}</p>
-    <p>Tenure - {{doctor.tenure}}</p>
+<div class="doctor-dashboard">
+    <h1>Doctor's dashboard</h1>
+    <!-- Doctor's information -->
+    <div>
+        <h2>{{doctor.user.first_name}} {{doctor.user.last_name}}</h2>
+        <p>Department - {{doctor.department}}</p>
+        <p>Tenure - {{doctor.tenure}}</p>
 
-    <div>
-        <a href='#'>View appointments</a><br />
-        <a href='#'>View patients</a><br />
-        <a href='#'>Logout</a><br />
+        <div>
+            <a href='/doctor/view-appointments/'>View appointments</a><br />
+            <a href='/doctor/view-patients/'>View patients</a><br />
+            <a href='#'>Logout</a><br />
+        </div>
     </div>
-</div>
-<div>
-    <!-- Welcome text -->
-    <h1>Welcome Dr. {{doctor.user.first_name}}</h1>
-    <!-- View appointments -->
     <div>
-        <a href="/doctor/view-appointments/">View Appointments</a>
-    </div>
-    <!-- Statistics -->
-    <div>
-        <h1>Statistics</h1>
-        <table>
-            <tr>
-                <td>Appointments</td>
-                <td>{{appointment_count}}</td>
-            </tr>
-            <tr>
-                <td>Patients</td>
-                <td>{{patient_count}}</td>
-            </tr>
-        </table>
+        <!-- Welcome text -->
+        <h1>Welcome Dr. {{doctor.user.first_name}}</h1>
+        <!-- View appointments -->
+        <div>
+            <a href="/doctor/view-appointments/">View Appointments</a>
+        </div>
+        <!-- Statistics -->
+        <div>
+            <h1>Statistics</h1>
+            <table>
+                <tr>
+                    <td>Appointments</td>
+                    <td>{{appointment_count}}</td>
+                </tr>
+                <tr>
+                    <td>Patients</td>
+                    <td>{{patient_count}}</td>
+                </tr>
+            </table>
 
-        <h1>Appointment Statistics</h1>
-        <table>
-            <tr>
-                <th>Patient</th>
-                <th>Status</th>
-                <th>Info</th>
-            </tr>
-            {% for a in appointments %}
-            <tr>
-                <td>{{a.patient_name}}</td>
-                <td>{{a.status}}</td>
-                <td><a href='#'>View more</a></td>
-            </tr>
-            {% endfor %}
-        </table>
+            <h1>Appointment Statistics</h1>
+            <table>
+                <tr>
+                    <th>Patient</th>
+                    <th>Status</th>
+                    <th>Info</th>
+                </tr>
+                {% for a in appointments %}
+                <tr>
+                    <td>{{a.patient_name}}</td>
+                    <td>{{a.status}}</td>
+                    <td><a href='#'>View more</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
     </div>
 </div>
 {% endblock body %}
