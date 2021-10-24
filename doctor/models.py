@@ -42,4 +42,4 @@ class Doctor(models.Model):
         return self.user.id
 
     def __str__(self):
-        return f'{self.user.first_name} {self.user.last_name} - {self.department}'
+        return "Dr." + f'{  self.user.first_name} {self.user.last_name} - {self.department}'

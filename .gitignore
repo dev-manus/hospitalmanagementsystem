@@ -10,3 +10,5 @@ Screenshots/
 **.sqlite3
 
 runserver
+
+hospital_management/credentials.py

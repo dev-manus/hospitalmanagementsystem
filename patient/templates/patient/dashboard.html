@@ -9,7 +9,7 @@
     <div class="container">
         <div class="user">
             <img class="img" src="{% static 'patient/Images/sample.png' %}" />
-            <h3 class="name">{{patient.user.first_name}} {{patient.user.last_name}}</h3>
+            <h3 class="name" style="font-family : Product Sans;">{{patient.user.first_name}} {{patient.user.last_name}}</h3>
             <h5 class="type">Patient</h5>
             <h5 class="details">Contact Number - {{patient.contact_no}}</h5>
             <h5 class="details">Address - {{patient.address}}</h5>
@@ -21,12 +21,12 @@
             <button onclick="location.href = 'logouts' " class="logout">Logout</button>
         </div>
         <div class="welcome">
-            <h2 class="heading">Welcome {{patient.user.first_name}}!</h2>
-            <h4 class="subheading">Tell us, how can we help you today</h4>
+            <h2 class="heading" style="font-family : Product Sans;">Welcome {{patient.user.first_name}}!</h2>
+            <h4 class="subheading" style="font-family : Product Sans;">Tell us, how can we help you today</h4>
             <div class="optiondiv">
-                <button class="option1"><a href='/patient/book-appointment'><i class="fa fa-calendar" style="font-size: 50px;"></i><br/><br/>Book an appointment</a></button>
-                <button class="option2"><i class="fa fa-search" style="font-size: 50px;"></i><br/><br/>Find a Doctor</button>
-                <button class="option3"><i class="fa fa-pencil" style="font-size: 50px;"></i><br/><br/>Book a Test</button>
+                <a href='/patient/book-appointment'><button class="option1" style="font-family : Product Sans;"><i class="fa fa-calendar" style="font-size: 50px;"></i><br/><br/>Book an appointment</button></a>
+                <button class="option2" style="font-family : Product Sans;"><i class="fa fa-search" style="font-size: 50px;"></i><br/><br/>Find a Doctor</button>
+                <button class="option3" style="font-family : Product Sans;"><i class="fa fa-pencil" style="font-size: 50px;"></i><br/><br/>Book a Test</button>
                 <div />
             </div>
         </div>

@@ -1,8 +1,4 @@
 database = {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'hospital-management-system',
-            'USER': 'postgres',
-            'PASSWORD': '1208',
-            'HOST': 'localhost',
-            'PORT': '5432'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
 }
