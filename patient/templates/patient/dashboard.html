@@ -2,6 +2,7 @@
 {% load static %}
 {% block links %}
 <link rel="stylesheet" type="text/css" href="{% static 'patient/css/dashboard.css' %}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock links %}
 {% block body %}
 <div>
@@ -10,9 +11,9 @@
             <img class="img" src="{% static 'patient/Images/sample.png' %}" />
             <h3 class="name">{{patient.user.first_name}} {{patient.user.last_name}}</h3>
             <h5 class="type">Patient</h5>
-            <h5 class="type">Contact Number - {{patient.contact_no}}</h5>
-            <h5 class="type">Address - {{patient.address}}</h5>
-            <h5 class="type">Gender - {{patient.sex}}</h5>
+            <h5 class="details">Contact Number - {{patient.contact_no}}</h5>
+            <h5 class="details">Address - {{patient.address}}</h5>
+            <h5 class="details">Gender - {{patient.sex}}</h5>
             <hr class="line">
             <button class="button">Profile</button>
             <button class="button">Appointment History</button>
@@ -23,9 +24,9 @@
             <h2 class="heading">Welcome {{patient.user.first_name}}!</h2>
             <h4 class="subheading">Tell us, how can we help you today</h4>
             <div class="optiondiv">
-                <button class="option1"><a href='/patient/book-appointment'>Book an appointment</a></button>
-                <button class="option2">Find a Doctor</button>
-                <button class="option3">Book a Test</button>
+                <button class="option1"><a href='/patient/book-appointment'><i class="fa fa-calendar" style="font-size: 50px;"></i><br/><br/>Book an appointment</a></button>
+                <button class="option2"><i class="fa fa-search" style="font-size: 50px;"></i><br/><br/>Find a Doctor</button>
+                <button class="option3"><i class="fa fa-pencil" style="font-size: 50px;"></i><br/><br/>Book a Test</button>
                 <div />
             </div>
         </div>

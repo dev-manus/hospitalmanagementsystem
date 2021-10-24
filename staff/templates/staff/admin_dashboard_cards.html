@@ -6,10 +6,16 @@
     <title></title>
 
     <style media="screen">
+        .market-updates {
+            width: 80%;
+            margin: auto;
+        }
+
         .market-update-block {
             padding: 2em 2em;
             background: #999;
         }
+
 
         .market-update-block h3 {
             color: #fff;
@@ -31,7 +37,7 @@
         }
 
         .market-update-block.clr-block-1 {
-            background: #ff0000;
+            background: #f76767;
             margin-right: 0.8em;
             box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
                 0 2px 10px 0 rgba(0, 0, 0, 0.12);
@@ -39,10 +45,11 @@
             -webkit-transition: 0.5s all;
             -moz-transition: 0.5s all;
             -o-transition: 0.5s all;
+            border-radius: 15px;
         }
 
         .market-update-block.clr-block-2 {
-            background: #fc8213;
+            background: #f59c49;
             margin-right: 0.8em;
             box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
                 0 2px 10px 0 rgba(0, 0, 0, 0.12);
@@ -50,16 +57,18 @@
             -webkit-transition: 0.5s all;
             -moz-transition: 0.5s all;
             -o-transition: 0.5s all;
+            border-radius: 15px;
         }
 
         .market-update-block.clr-block-3 {
-            background: #1355f9;
+            background: #5f8af7;
             box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
                 0 2px 10px 0 rgba(0, 0, 0, 0.12);
             transition: 0.5s all;
             -webkit-transition: 0.5s all;
             -moz-transition: 0.5s all;
             -o-transition: 0.5s all;
+            border-radius: 15px;
         }
 
         .market-update-block.clr-block-1:hover {
@@ -140,45 +149,51 @@
 
 <body>
     <div class="market-updates">
-        <div class="col-md-4 market-update-gd">
-            <div class="market-update-block clr-block-1">
-                <div class="col-md-8 market-update-left">
-                    <h3>{{doctorcount}}</h3>
-                    <h4>Total Doctor</h4>
-                    <p>Approval Required : {{pendingdoctorcount}}</p>
+        <a href='/staff/unapproved-doctors'>
+            <div class="col-md-4 market-update-gd">
+                <div class="market-update-block clr-block-1">
+                    <div class="col-md-8 market-update-left">
+                        <h3>{{doctorcount}}</h3>
+                        <h4>Total Doctor</h4>
+                        <p>Approval Required : {{pendingdoctorcount}}</p>
+                    </div>
+                    <div class="col-md-4 market-update-right">
+                        <i class="fa fa-user-md"></i>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="col-md-4 market-update-right">
-                    <i class="fa fa-user-md"></i>
-                </div>
-                <div class="clearfix"></div>
             </div>
-        </div>
-        <div class="col-md-4 market-update-gd">
-            <div class="market-update-block clr-block-2">
-                <div class="col-md-8 market-update-left">
-                    <h3>{{patientcount}}</h3>
-                    <h4>Total Patient</h4>
-                    <p>Wants to Admit : {{pendingpatientcount}}</p>
+        </a>
+        <a href='/staff/unapproved-patients'>
+            <div class="col-md-4 market-update-gd">
+                <div class="market-update-block clr-block-2">
+                    <div class="col-md-8 market-update-left">
+                        <h3>{{patientcount}}</h3>
+                        <h4>Total Patient</h4>
+                        <p>Wants to Admit : {{pendingpatientcount}}</p>
+                    </div>
+                    <div class="col-md-4 market-update-right">
+                        <i class="fa fa-user-o"></i>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="col-md-4 market-update-right">
-                    <i class="fa fa-user-o"></i>
-                </div>
-                <div class="clearfix"></div>
             </div>
-        </div>
-        <div class="col-md-4 market-update-gd">
-            <div class="market-update-block clr-block-3">
-                <div class="col-md-8 market-update-left">
-                    <h3>{{apppointmentscount}}</h3>
-                    <h4>Total Appointment</h4>
-                    <p>Approve Appointments : {{apppointmentscount}}</p>
+        </a>
+        <a href='/staff/unapproved-appointments'>
+            <div class="col-md-4 market-update-gd">
+                <div class="market-update-block clr-block-3">
+                    <div class="col-md-8 market-update-left">
+                        <h3>{{apppointmentscount}}</h3>
+                        <h4>Total Appointment</h4>
+                        <p>Approve Appointments : {{apppointmentscount}}</p>
+                    </div>
+                    <div class="col-md-4 market-update-right">
+                        <i class="fa fa-calendar"> </i>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="col-md-4 market-update-right">
-                    <i class="fa fa-calendar"> </i>
-                </div>
-                <div class="clearfix"></div>
             </div>
-        </div>
+        </a>
         <div class="clearfix"></div>
     </div>
 </body>

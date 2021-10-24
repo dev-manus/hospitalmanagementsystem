@@ -1,12 +1,12 @@
 .container {
     display: flex;
     flex-direction: row;
-    padding: 25px;
 }
 .user {
     display: flex;
     flex-direction: column;
-    width: 20%;
+    width: 300px;
+    height: 600px;
     padding: 15px;
     border: 1px solid gray;
     align-items: center;
@@ -29,13 +29,21 @@
 
 .type {
     margin-top: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: gray;
+    font-weight: lighter;
+}
+
+.details{
+    
     font-size: 14px;
     color: gray;
     font-weight: lighter;
 }
 
 .button {
-    margin: 10px;
+    margin: 3px;
     cursor: pointer;
     background-color: transparent;
     font-size: 15px;
@@ -67,19 +75,23 @@
 }
 
 .welcome {
+    margin:0;
+    width:100%;
     padding: 20px;
     margin-left: 40px;
 }
 .optiondiv {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    
 }
 .option1 {
     width: 270px;
     height: 270px;
     padding: 40px;
     border-radius: 60px;
-    margin-top: 35px;
+    margin-top: 65px;
     margin-right: 40px;
     cursor: pointer;
     border: 0;
@@ -93,7 +105,7 @@
     height: 270px;
     padding: 40px;
     border-radius: 60px;
-    margin-top: 35px;
+    margin-top: 65px;
     margin-right: 40px;
     cursor: pointer;
     border: 0;
@@ -107,7 +119,7 @@
     height: 270px;
     padding: 40px;
     border-radius: 60px;
-    margin-top: 35px;
+    margin-top: 65px;
     margin-right: 40px;
     cursor: pointer;
     border: 0;
@@ -143,3 +155,26 @@
     text-decoration: none;
     color: black;
 }
+
+@media (max-width: 1200px) {
+    .container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .user{
+        margin-bottom: 25px;
+    }
+
+    .welcome {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+
+    .optiondiv{
+        align-items: center;
+        flex-direction: column;
+    }
+  }
