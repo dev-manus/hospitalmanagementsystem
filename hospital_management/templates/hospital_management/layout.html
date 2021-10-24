@@ -21,7 +21,7 @@
     {% endblock links %}
 </head>
 
-<body>
+<body style="font-family : Product Sans;">
     <nav class="
                 navbar
                 navigation-clean
@@ -55,14 +55,22 @@
       <span class="navbar-toggler-icon"></span>
     </button> -->
 
-            <img
+            <a href = "
+            {% if user.is_authenticated %}
+            {% url 'logout' %}
+            {% else %}
+            {% url 'login' %}
+            {% endif %}
+            "
+            
+            ><img
             
                 src="{% static 'hospital_management/images/menu.png' %}"
                 width="40"
                 height="40"
                 class="d-inline-block align-top"
                 alt=""
-            />
+            /></a>
 
         </nav>
         {% block body %} {% endblock body %}

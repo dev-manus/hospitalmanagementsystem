@@ -7,9 +7,9 @@
     <div>{% render_field user_form.first_name placeholder="First Name" %}</div>
     <div>{% render_field user_form.last_name placeholder="Last Name" %}</div>
     <div>{% render_field user_form.username placeholder="Username" %}</div>
-    <div>{% render_field user_form.password placeholder="password" %}</div>
+    <div >{% render_field user_form.password placeholder="password" type="password" %}</div>
     <div>{% render_field patient_form.address placeholder="Address" %}</div>
-    <div>{% render_field patient_form.contact_no %}</div>
+    <div>{% render_field patient_form.contact_no placeholder="ContactNo"%}</div>
     <div>{% render_field patient_form.symptoms placeholder="Symptoms" %}</div>
     <div>{% render_field patient_form.sex %}</div>
     <button type="submit">Register</button>
