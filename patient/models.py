@@ -27,12 +27,13 @@ class Patient(models.Model):
     sex = models.CharField(choices=sex, max_length=6, default='Male')
     department = models.CharField(max_length=30,
                                   choices=departments, default='General Physician')
+    status = models.BooleanField(default=False)
     assigned_doctor = models.OneToOneField(
         Doctor, null=True, on_delete=models.CASCADE)
 
     @property
     def get_name(self):
-        return f'{self.user.first_name} {self.user.laast_name}'
+        return f'{self.user.first_name} {self.user.last_name}'
 
     @property
     def get_id(self):

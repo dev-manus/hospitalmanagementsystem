@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'patient',
     'doctor',
     'widget_tweaks',
-    'hospital_management'
+    'hospital_management',
+    'staff.apps.StaffConfig',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [

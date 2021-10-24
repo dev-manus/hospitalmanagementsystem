@@ -2,22 +2,27 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>SJSB hospital</title>
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Product+Sans:400,700"
-        />
-        <link
-            href="{% static 'hospital_management/CSS/index.css' %}"
-            rel="stylesheet"
-        />
-    </head>
 
-    <body>
-        <nav
-            
-            class="
+<head>
+    <title>SJSB hospital</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Product+Sans:400,700" />
+    <link href="{% static 'hospital_management/css/index.css' %}" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Kaushan+Script"
+    />
+    <link href="{% static 'hospital_management/css/font-awesome.min.css' %}" rel="stylesheet" />
+<link href="{% static 'hospital_management/css/homepage.css' %}" rel="stylesheet" />
+    {% block links %}
+    {% endblock links %}
+</head>
+
+<body>
+    <nav class="
                 navbar
                 navigation-clean
                 navbar-expand-lg navbar-light

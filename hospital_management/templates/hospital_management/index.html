@@ -1,106 +1,187 @@
 {% extends "hospital_management/layout.html" %}
+
 {% load static %}
 
 {% block body %}
 
-<div class="container-fluid">
-
-    <h1> Area is under experiment , please ignore :D </h1>
-    <div class= row>
-        <div class="col-3 scroll-hidden" style= " height : calc(100vh - 100px);">
-
-            <div class="card my-" style="width: 18rem;">
-                <img class="card-img-top" src="{% static 'hospital_management/images/obito.jpg' %}" style="height:400px; width : 250px ">
-                <div class="card-body">
-                  <h5 class="card-title">Sidebar here</h5>
-                  <a href="#" class="btn btn-primary">Logout</a>
-                </div>
-              </div>
-            
+<div id="page-top"
+data-bs-spy="scroll"
+data-bs-target="#mainNav"
+data-bs-offset="54">
+<header
+      class="masthead"
+      style="
+        background: url( "{% static 'hospital_management/images/doctor-with-stethoscope-hands-hospital-background.jpg' %}");
+      "
+    >
+      <div class="container">
+        <div class="intro-text">
+          <div class="intro-lead-in">
+            <span class="text-dark">Welcome To Our Hospital</span>
+          </div>
+          <div class="intro-heading text-uppercase">
+            <span class="text-dark">lets make you healty again!</span>
+          </div>
+          <a
+            class="btn btn-primary btn-xl text-uppercase"
+            role="button"
+            href="#services"style="background: rgb(254, 209, 54)"
+            >Book an appointment</a
+          >
         </div>
-        <div class="col-9 scroll-hidden" style= "height : calc(100vh - 100px); ">
-            sd2
-
-            <!-- <div class="container ">
-				<div class="row text-center">
-					<div class="col-xs-4"> -->
-                        Hidden scroll test
-                            <br>1
-                            <br>2
-                            <br>3
-                            <br>4
-                            <br>5
-                            <br>6
-                            <br>7
-                            <br>8
-                            <br>9
-                            <br>10
-                            <br>1
-                            <br>2
-                            <br>3
-                            <br>4
-                            <br>5
-                            <br>6
-                            <br>7
-                            <br>8
-                            <br>9
-                            <br>10
-                            <br>1
-                            <br>2
-                            <br>3
-                            <br>4
-                            <br>5
-                            <br>6
-                            <br>7
-                            <br>8
-                            <br>9
-                            <br>10
-                            <br>1
-                            <br>2
-                            <br>3
-                            <br>4
-                            <br>5
-                            <br>6
-                            <br>7
-                            <br>8
-                            <br>9
-                            <br>10
-                            <br>1
-                            <br>2
-                            <br>3
-                            <br>4
-                            <br>5
-                            <br>6
-                            <br>7
-                            <br>8
-                            <br>9
-                            <br>10
-                            <br>1
-                            <br>2
-                            <br>3
-                            <br>4
-                            <br>5
-                            <br>6
-                            <br>7
-                            <br>8
-                            <br>9
-                            <br>10
-                            <br>1
-                            <br>2
-                            <br>3
-                            <br>4
-                            <br>5
-                            <br>6
-                            <br>7
-                            <br>8
-                            <br>9
-                            <br>10
-                          </div>
+      </div>
+    </header>
+    <section id="services">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="text-uppercase section-heading">Our Specialities</h2>
+          </div>
         </div>
-    </div>
-        
-    
-  </div>
+        <div class="row text-center">
+          <div class="col-md-4">
+            <span class="fa-stack fa-4x"
+              ><i class="fa fa-circle fa-stack-2x text-primary"></i
+              ><i class="fa fa-heartbeat fa-stack-1x fa-inverse"></i
+            ></span>
+            <h4 class="section-heading">Cardiology</h4>
+            <p class="text-muted">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
+              maxime quam architecto quo inventore harum ex magni, dicta
+              impedit.
+            </p>
+          </div>
+          <div class="col-md-4">
+            <span class="fa-stack fa-4x"
+              ><i class="fa fa-circle fa-stack-2x text-primary"></i
+              ><i class="fa fa-stethoscope fa-stack-1x fa-inverse"></i
+            ></span>
+            <h4 class="section-heading">Neruology</h4>
+            <p class="text-muted">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
+              maxime quam architecto quo inventore harum ex magni, dicta
+              impedit.
+            </p>
+          </div>
+          <div class="col-md-4">
+            <span class="fa-stack fa-4x"
+              ><i class="fa fa-circle fa-stack-2x text-primary"></i
+              ><i class="fa fa-wheelchair fa-stack-1x fa-inverse"></i
+            ></span>
+            <h4 class="section-heading">Physiology</h4>
+            <p class="text-muted">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
+              maxime quam architecto quo inventore harum ex magni, dicta
+              impedit.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="bg-light" id="portfolio">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="text-uppercase section-heading">Why US?</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 col-md-4 portfolio-item">
+            <a
+              class="portfolio-link"
+              href="#portfolioModal1"
+              data-bs-toggle="modal"
+            >
+              <div class="portfolio-hover"></div>
+              <img
+                class="img-fluid"
+                src="{% static 'hospital_management/images/hospitality.jpg' %}"
+              />
+            </a>
+            <div class="portfolio-caption">
+              <h4>Hospitality</h4>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 portfolio-item">
+            <a
+              class="portfolio-link"
+              href="#portfolioModal2"
+              data-bs-toggle="modal"
+            >
+              <div class="portfolio-hover"></div>
+              <img class="img-fluid" src="{% static 'hospital_management/images/safety.jpg' %}" />
+            </a>
+            <div class="portfolio-caption">
+              <h4>Safety</h4>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 portfolio-item">
+            <a
+              class="portfolio-link"
+              href="#portfolioModal3"
+              data-bs-toggle="modal"
+            >
+              <div class="portfolio-hover"></div>
+              <img class="img-fluid" src="{% static 'hospital_management/images/infra.jpg' %}" />
+            </a>
+            <div class="portfolio-caption">
+              <h4>Infrastructure</h4>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 portfolio-item">
+            <a
+              class="portfolio-link"
+              href="#portfolioModal4"
+              data-bs-toggle="modal"
+            >
+              <div class="portfolio-hover"></div>
+              <img class="img-fluid" src="{% static 'hospital_management/images/tech.jpg' %}" />
+            </a>
+            <div class="portfolio-caption">
+              <h4>Latest Technology</h4>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 portfolio-item">
+            <a
+              class="portfolio-link"
+              href="#portfolioModal5"
+              data-bs-toggle="modal"
+            >
+              <div class="portfolio-hover"></div>
+              <img class="img-fluid" src="{% static 'hospital_management/images/doctors.jpg' %}" />
+            </a>
+            <div class="portfolio-caption">
+              <h4>Best Doctors</h4>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 portfolio-item">
+            <a
+              class="portfolio-link"
+              href="#portfolioModal6"
+              data-bs-toggle="modal"
+            >
+              <div class="portfolio-hover"></div>
+              <img
+                class="img-fluid"
+                src="{% static 'hospital_management/images/insuarance.jpg' %}"
+              />
+            </a>
+            <div class="portfolio-caption">
+              <h4>Insuarance</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-4">
+            <span class="copyright"style="font-size:13.4px">Copyright&nbsp;© San Jose St Bonaventure Hospital 2021</span>
+          </div>
+        </div>
+      </div>
+    </footer>
 </div>
 
 {% endblock %}
