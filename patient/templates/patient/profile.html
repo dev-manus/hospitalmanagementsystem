@@ -1,0 +1,49 @@
+{% extends "hospital_management/layout.html" %} 
+{% load widget_tweaks %} 
+{% load static %}
+{% block links %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'patient/css/dashboard.css' %}"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+{% endblock links %} {% block body %}
+<div>
+  <div class="container">
+    <div class="user">
+      <img class="img" src="{% static 'patient/Images/sample.png' %}" />
+      <h3 class="name" style="font-family: Product Sans">
+        {{patient.user.first_name}} {{patient.user.last_name}}
+      </h3>
+      <h5 class="type">Patient</h5>
+      
+      <hr class="line" />
+      <button class="button active">Profile</button>
+      <a href="/patient/appointment-history"
+        ><button class="button">Appointment History</button></a
+      >
+      <button class="button">Payment</button>
+      <button onclick="location.href = '/logout' " class="logout">
+        Logout
+      </button>
+    </div>
+    <div class="welcome">
+      <h2 class="heading" style="font-family: Product Sans">
+        Welcome {{patient.user.first_name}}!
+      </h2>
+      <h4 class="subheading" style="font-family: Product Sans">
+        This is all we know about you 
+      </h4>
+      <h5 class="details">Contact Number: {{patient.contact_no}}</h5>
+      <h5 class="details">Address: {{patient.address}}</h5>
+      <h5 class="details">Gender: {{patient.sex}}</h5>
+    
+      </div>
+    </div>
+  </div>
+  {% endblock body %}
+</div>

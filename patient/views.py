@@ -57,11 +57,13 @@ def patient_dashboard(request):
 # Book appointment
 
 
-@login_required(login_url='patient-login')
-@user_passes_test(is_patient, login_url='patient-login')
+@login_required(login_url='login')
+@user_passes_test(is_patient, login_url='login')
 def book_appointment(request):
+    patient = Patient.objects.get(user_id=request.user.id)
     appointment_form = BookAppointment()
-    view_context = {'appointment_form': appointment_form}
+    view_context = {'appointment_form': appointment_form,
+    'patient': patient}
 
     if request.method == 'POST':
         appointment_form = BookAppointment(request.POST)
@@ -118,3 +120,13 @@ def check_username(request,usr):
     username_exists = User.objects.filter(username__iexact=usr).exists()
     
     return HttpResponse(username_exists)
+
+def view_profile(request):
+    patient = Patient.objects.get(user_id=request.user.id)
+
+    view_context = {
+        'patient': patient
+    }
+    return render(request, 'patient/profile.html', context=view_context)
+
+

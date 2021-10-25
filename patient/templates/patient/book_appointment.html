@@ -1,8 +1,78 @@
-{% extends "hospital_management/layout.html" %}
-{% load widget_tweaks %}
-{% block body %}
-<form method="POST" enctype="multipart/form-data" action="{% url 'book-appointment' %}">
-    {% csrf_token %} {{ appointment_form }}
-    <button type="submit">Submit</button>
-</form>
-{% endblock body %}
+{% extends "hospital_management/layout.html" %} 
+{% load widget_tweaks %} 
+{% load static %}
+{% block links %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'patient/css/dashboard.css' %}"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+{% endblock links %} {% block body %}
+<div>
+  <div class="container">
+    <div class="user">
+      <img class="img" src="{% static 'patient/Images/sample.png' %}" />
+      <h3 class="name" style="font-family: Product Sans">
+        {{patient.user.first_name}} {{patient.user.last_name}}
+      </h3>
+      <h5 class="type">Patient</h5>
+      <hr class="line" />
+      <a href = "/patient/profile"><button class="button">Profile</button></a>
+      <a href="/patient/appointment-history"
+        ><button class="button">Appointment History</button></a
+      >
+      <button class="button">Payment</button>
+      <button onclick="location.href = '/logout' " class="logout">
+        Logout
+      </button>
+    </div>
+    <div class="welcome">
+      <h2 class="heading" style="font-family: Product Sans">
+        Welcome {{patient.user.first_name}}!
+      </h2>
+      <h4 class="subheading" style="font-family: Product Sans">
+        Lets book you an appointment !
+      </h4>
+      <form method="POST" enctype="multipart/form-data" action="{% url 'book-appointment' %}">
+        {% csrf_token %} 
+
+        <div class="row" style="height: 100%">
+            <div class="col-6" style="height:150px;">
+                Describe your symptoms in some words:
+                <div>{% render_field appointment_form.description placeholder="Start Here" rows="8" %}</div>
+            </div>
+            <div class="col-6" style="height:150px;">
+                
+                Choose your department or doctor
+                <div>{% render_field appointment_form.doctor_id placeholder="First Name" %}</div>
+                Choose preffered Date
+                <div>{% render_field appointment_form.doctor_id placeholder="First Name" %}</div>
+                Choose preffered time
+                <div>{% render_field appointment_form.doctor_id placeholder="First Name" %}</div>
+            </div>
+        
+            <div class="row" style="height:auto; justify-content: center;">
+                <button type="submit" id= "submit_btn" style = "margin-top: 50px;
+                margin: 20px;
+                padding: 5px;
+                border-radius: 15px;
+                background-color: rgb(170, 209, 253);
+                border: white;
+                width: 200px;
+                height: 50px;
+                font-size: 15px;
+                cursor: pointer;
+                transition: transform 0.2s;" >Book appointment</button>
+            </div>
+        </div>
+    </form>
+    
+      </div>
+    </div>
+  </div>
+  {% endblock body %}
+</div>

@@ -13,4 +13,5 @@ urlpatterns = [
     path('appointment-history', appointment_history, name='appointment-history'),
     path('get-doctors/', get_all_doctors, name='get-doctors'),
     path('register/check_username/<usr>', check_username, name='check_username'),
+    path('profile/', view_profile,name = "view_profile")
 ]

@@ -11,9 +11,6 @@
             <img class="img" src="{% static 'patient/Images/sample.png' %}" />
             <h3 class="name" style="font-family : Product Sans;">{{patient.user.first_name}} {{patient.user.last_name}}</h3>
             <h5 class="type">Patient</h5>
-            <h5 class="details">Contact Number: {{patient.contact_no}}</h5>
-            <h5 class="details">Address: {{patient.address}}</h5>
-            <h5 class="details">Gender: {{patient.sex}}</h5>
             <hr class="line">
             <button class="button">Profile</button>
             <a href='/patient/appointment-history'><button class="button">Appointment History</button></a>
