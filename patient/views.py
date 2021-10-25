@@ -1,8 +1,11 @@
+from django.http.response import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.http import HttpResponseRedirect
 from .forms import *
+from django.contrib.auth.models import User 
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -108,3 +111,10 @@ def get_all_doctors(request):
         'doctors': doctors
     }
     return render(request, 'patient/doctors_list.html', context=view_context)
+
+
+
+def check_username(request,usr):
+    username_exists = User.objects.filter(username__iexact=usr).exists()
+    
+    return HttpResponse(username_exists)

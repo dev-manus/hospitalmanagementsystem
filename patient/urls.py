@@ -11,5 +11,6 @@ urlpatterns = [
     path('book-appointment/', book_appointment, name='book-appointment'),
     path('appointment-booked/', appointment_booked, name='appointment-booked'),
     path('appointment-history', appointment_history, name='appointment-history'),
-    path('get-doctors/', get_all_doctors, name='get-doctors')
+    path('get-doctors/', get_all_doctors, name='get-doctors'),
+    path('register/check_username/<usr>', check_username, name='check_username'),
 ]
