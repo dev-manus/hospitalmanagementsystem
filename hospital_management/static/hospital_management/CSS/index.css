@@ -2,7 +2,57 @@
 /* Pretty much everything in CSS : ) */
 /* ALl of the bootstrap is included too */
 
+.dropbtn {
 
+  background-color: transparent;
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  
+}
+
+.dropdown {
+  right: 0;
+  left: auto;
+  position: left;
+  display: inline-block;
+
+
+}
+
+.dropdown-content {
+  right: 0;
+    left: auto;
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+
+}
+
+.dropdown-content a {
+  right: 0;
+    left: auto;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  right: 0;
+    left: auto;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: transparent;
+}
 
 .horizontal-scrollable > .row {
   overflow-x: auto;

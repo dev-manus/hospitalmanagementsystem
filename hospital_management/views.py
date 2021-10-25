@@ -53,6 +53,7 @@ def book_appointment(request):
 
 def login_(request):
     if request.method == "POST":
+        print("here")
 
         # Attempt to sign user in
         username = request.POST["username"]
@@ -72,7 +73,7 @@ def login_(request):
                 "message": "Invalid username and/or password.",
                 "login_active": True,
             })
-    else:
+    elif request.method == "GET":
         return render(request, "hospital_management/login.html", {
             "login_active": True,
         })

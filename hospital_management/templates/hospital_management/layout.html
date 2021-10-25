@@ -55,12 +55,30 @@
       <span class="navbar-toggler-icon"></span>
     </button> -->
 
-            <a href = "
+        <div class="dropdown d-inline-block align-top">
+            <img
+            
+                src="{% static 'hospital_management/images/menu.png' %}"
+                width="40"
+                height="40"
+                class="dropbtn"
+                alt=""
+            />
+            <div class="dropdown-content">
+                
             {% if user.is_authenticated %}
-            {% url 'logout' %}
+                <a href="{% url 'logout' %}"> Logout</a>
             {% else %}
-            {% url 'login' %}
+                <a href="{% url 'login' %}" >Login</a>
             {% endif %}
+
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+            </div>
+        </div>
+
+            <!-- <a href = "
+            
             "
             
             ><img
@@ -70,7 +88,7 @@
                 height="40"
                 class="d-inline-block align-top"
                 alt=""
-            /></a>
+            /></a> -->
 
         </nav>
         {% block body %} {% endblock body %}
