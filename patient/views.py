@@ -3,8 +3,10 @@ from django.shortcuts import render
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.http import HttpResponseRedirect
+
+from doctor.models import Prescription
 from .forms import *
-from django.contrib.auth.models import User 
+from django.contrib.auth.models import User
 from django.http import JsonResponse
 
 # Create your views here.
@@ -63,7 +65,7 @@ def book_appointment(request):
     patient = Patient.objects.get(user_id=request.user.id)
     appointment_form = BookAppointment()
     view_context = {'appointment_form': appointment_form,
-    'patient': patient}
+                    'patient': patient}
 
     if request.method == 'POST':
         appointment_form = BookAppointment(request.POST)
@@ -115,11 +117,24 @@ def get_all_doctors(request):
     return render(request, 'patient/doctors_list.html', context=view_context)
 
 
+@login_required(login_url='login')
+@user_passes_test(is_patient, login_url='login')
+def get_prescriptions(request):
+    prescriptions = Prescription.objects.all().filter(patient_id=request.user.id)
+    # doctor = Doctor.objects.get(user_id=prescriptions.doctor_id)
+    # patient = Patient.objects.get(user_id=prescriptions.patient_id)
 
-def check_username(request,usr):
+    view_context = {
+        'prescriptions': prescriptions
+    }
+    return render(request, 'patient/prescriptions.html', context=view_context)
+
+
+# Utility functions
+def check_username(request, usr):
     username_exists = User.objects.filter(username__iexact=usr).exists()
-    
     return HttpResponse(username_exists)
+
 
 def view_profile(request):
     patient = Patient.objects.get(user_id=request.user.id)
@@ -128,5 +143,3 @@ def view_profile(request):
         'patient': patient
     }
     return render(request, 'patient/profile.html', context=view_context)
-
-

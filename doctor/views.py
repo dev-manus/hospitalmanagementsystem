@@ -101,7 +101,7 @@ def prescribe(request, pk):
             prescription = prescription_form.save(commit=False)
 
             prescription.patient_id = appointment.patient_id
-            prescription.name = appointment.patient_name
+            prescription.patient_name = appointment.patient_name
             prescription.doctor_id = appointment.doctor_id
             prescription.doctor_name = appointment.doctor_name
 
