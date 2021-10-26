@@ -53,7 +53,6 @@ def book_appointment(request):
 
 def login_(request):
     if request.method == "POST":
-        print("here")
 
         # Attempt to sign user in
         username = request.POST["username"]

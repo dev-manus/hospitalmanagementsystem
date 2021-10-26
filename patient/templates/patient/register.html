@@ -39,6 +39,7 @@
 
 <div class="container" id="container">
 
+    
   <div class="form-container sign-in-container">
     <form
         action="{% url 'patient-register' %}"
@@ -46,13 +47,12 @@
         method="POST"
       >
       <h1>Register</h1>
-      <span>or Login to your account</span>
+      <span>or <a href="/login">Login</a> to your account</span>
       <hr>
 
       {% if message %}
       <div class="alert alert-danger" role="alert">{{ message }}</div>
       {% endif %}
-
 
         {% csrf_token %}
         <div>{% render_field user_form.first_name placeholder="First Name" %}</div>
@@ -60,21 +60,12 @@
         
         <div>{% render_field patient_form.address placeholder="Address" %}</div>
         <div>{% render_field patient_form.contact_no placeholder="ContactNo"%}</div>
-        
-       
-        
-    
-
-        
-    
+         
   </div>
   
   
   <div class="overlay-container">
     <div class="overlay">
-      <div class="overlay-panel overlay-left">
-        
-      </div>
       <div class="overlay-panel overlay-right">
         
         <hr>

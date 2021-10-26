@@ -45,7 +45,6 @@ def patient_register(request):
 
 # Patient's dashboard
 @login_required(login_url='login')
-@user_passes_test(is_patient, login_url='login')
 def patient_dashboard(request):
     patient = Patient.objects.get(user_id=request.user.id)
 

@@ -38,8 +38,8 @@ a {
 button {
     
 	border-radius: 20px;
-	border: 1px solid #FF4B2B;
-	background-color: #FF4B2B;
+	border: 1px solid #F47171;
+	background-color: #F47171;
 	color: #000000;
 	font-size: 12px;
 	font-weight: bold;
@@ -65,6 +65,8 @@ button:focus {
 
 form {
 	background-color: #FFFFFF;
+	background: -webkit-linear-gradient(to right, #F47171, #F47171);
+	background: linear-gradient(to right , #F47171 , #fff79f) ;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -120,12 +122,16 @@ select {
 	top: 0;
 	height: 100%;
 	transition: all 0.6s ease-in-out;
+	background: -webkit-linear-gradient(to right, #F47171, #F47171);
+	background: linear-gradient(to right, #fff79e , #F47171) ;
 }
 
 .sign-in-container {
 	left: 0;
 	width: 50%;
 	z-index: 2;
+	background: -webkit-linear-gradient(to right, #F47171, #F47171);
+	background: linear-gradient(to right, #fff79e , #F47171) ;
 }
 
 .container.right-panel-active .sign-in-container {
@@ -174,9 +180,9 @@ select {
 }
 
 .overlay {
-	background: #718EF4;
-	background: -webkit-linear-gradient(to right, #F47171, #F47171);
-	background: linear-gradient(to right, #fff79e , #F47171) ;
+	background: #FFFFFF;
+	/* background: -webkit-linear-gradient(to right, #F47171, #F47171);
+	background: linear-gradient(to right, #fff79e , #F47171) ; */
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;

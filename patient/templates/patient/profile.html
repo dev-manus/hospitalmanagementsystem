@@ -15,21 +15,27 @@
 <div>
   <div class="container">
     <div class="user">
+        
       <img class="img" src="{% static 'patient/Images/sample.png' %}" />
-      <h3 class="name" style="font-family: Product Sans">
+      <a href="/patient/dashboard">
+      <h3 class="name" style="font-family: Product Sans; color: black "">
         {{patient.user.first_name}} {{patient.user.last_name}}
       </h3>
+    </a>
       <h5 class="type">Patient</h5>
       
       <hr class="line" />
+      <a href="/patient/dashboard"
+        ><button class="button">Dashboard</button></a
+      >
       <button class="button active">Profile</button>
       <a href="/patient/appointment-history"
         ><button class="button">Appointment History</button></a
       >
       <button class="button">Payment</button>
-      <button onclick="location.href = '/logout' " class="logout">
+      <a href="/logout"><button class="logout">
         Logout
-      </button>
+      </button></a>
     </div>
     <div class="welcome">
       <h2 class="heading" style="font-family: Product Sans">
