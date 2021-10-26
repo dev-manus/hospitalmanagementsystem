@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Doctor
+from django.forms import fields
+from .models import Doctor, Prescription
 
 # Form for doctor
 
@@ -18,3 +19,10 @@ class DoctorForm(forms.ModelForm):
     class Meta:
         model = Doctor
         fields = ['address', 'contact_no', 'sex', 'department']
+
+
+# Prescription form
+class PrescriptionForm(forms.ModelForm):
+    class Meta:
+        model = Prescription
+        fields = ['prescription', 'medicines']

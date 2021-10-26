@@ -12,6 +12,7 @@
         <p><strong>Patient name</strong>: {{a.patient_name}}</p>
         <p><strong>Appointment Date: </strong>{{a.appointment_date}}</p>
         <p><strong>Description</strong>: {{a.description}}</p>
+        <a href="/doctor/prescribe/{{a.pk}}"><button>Prescribe</button></a>
     </div>
     {% endfor %}
 </div>

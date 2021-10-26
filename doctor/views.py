@@ -1,10 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 from doctor.models import Doctor
 from patient.models import Appointment, Patient
-from .forms import DoctorUserForm, DoctorForm
+from .forms import DoctorUserForm, DoctorForm, PrescriptionForm
 from django.http import HttpResponseRedirect
 
 # Create your views here.
@@ -81,3 +81,31 @@ def view_patients(request):
         'patients': patients
     }
     return render(request, 'doctor/patient_list.html', context=view_context)
+
+
+@login_required(login_url='doctor-login')
+@user_passes_test(is_doctor, login_url='doctor-login')
+def prescribe(request, pk):
+    appointment = Appointment.objects.get(pk=pk)
+    prescription_form = PrescriptionForm()
+
+    view_context = {
+        'appointment': appointment,
+        'prescription_form': prescription_form
+    }
+
+    if request.method == 'POST':
+        prescription_form = PrescriptionForm(request.POST)
+
+        if prescription_form.is_valid():
+            prescription = prescription_form.save(commit=False)
+
+            prescription.patient_id = appointment.patient_id
+            prescription.name = appointment.patient_name
+            prescription.doctor_id = appointment.doctor_id
+            prescription.doctor_name = appointment.doctor_name
+
+            prescription.save()
+            appointment.delete()
+        return redirect('view-appointments')
+    return render(request, 'doctor/prescribe.html', context=view_context)
