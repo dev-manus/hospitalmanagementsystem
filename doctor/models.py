@@ -43,3 +43,17 @@ class Doctor(models.Model):
 
     def __str__(self):
         return "Dr." + f'{  self.user.first_name} {self.user.last_name} - {self.department}'
+
+
+# Prescription
+class Prescription(models.Model):
+    patient_id = models.PositiveIntegerField(null=True)
+    patient_name = models.CharField(max_length=40, null=True)
+    doctor_id = models.PositiveIntegerField(null=True)
+    doctor_name = models.CharField(max_length=40, null=True)
+    appointment_date = models.DateField(auto_now=True)
+    prescription = models.TextField(max_length=500)
+    medicines = models.TextField(max_length=500)
+
+    def __str__(self):
+        return f'Patient: {self.patient_id} Doctor: {self.doctor_id}'

@@ -9,11 +9,13 @@
     <div class="container">
         <div class="user">
             <img class="img" src="{% static 'patient/Images/sample.png' %}" />
-            <h3 class="name" style="font-family : Product Sans;">{{patient.user.first_name}} {{patient.user.last_name}}</h3>
+            <h3 class="name" style="font-family : Product Sans;">{{patient.user.first_name}} {{patient.user.last_name}}
+            </h3>
             <h5 class="type">Patient</h5>
             <hr class="line">
             <button class="button">Profile</button>
             <a href='/patient/appointment-history'><button class="button">Appointment History</button></a>
+            <a href='/patient/view-prescriptions'><button class="button">View Prescriptions</button></a>
             <button class="button">Payment</button>
             <button onclick="location.href = '/logout' " class="logout">Logout</button>
         </div>

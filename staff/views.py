@@ -39,7 +39,8 @@ def staff_dashboard(request):
     patients = Patient.objects.all().order_by('-id')
     doctorcount = Doctor.objects.all().filter(status=True).count()
     pendingdoctorcount = Doctor.objects.all().filter(status=False).count()
-    appointmentscount = Appointment.objects.all().filter(status=False).count()
+    appointmentscount = Appointment.objects.all().filter(status=True).count()
+    pendingappointmentcount = Appointment.objects.all().filter(status=False).count()
     patientcount = Patient.objects.all().filter(status=True).count()
     pendingpatientcount = Patient.objects.all().filter(status=False).count()
 
@@ -50,7 +51,8 @@ def staff_dashboard(request):
         'pendingdoctorcount': pendingdoctorcount,
         'patientcount': patientcount,
         'pendingpatientcount': pendingpatientcount,
-        'apppointmentscount': appointmentscount
+        'apppointmentscount': appointmentscount,
+        'pendingappointmentcount': pendingappointmentcount
     }
     return render(request, 'staff/dashboard.html', context)
 
@@ -77,6 +79,16 @@ def unapproved_appointments_list(request):
 
 @login_required(login_url='staff-login')
 @user_passes_test(is_admin, login_url='staff-login')
+def unapproved_patients_list(request):
+    patients = Patient.objects.all().filter(status=False)
+    context = {
+        'patients': patients
+    }
+    return render(request, 'staff/patients_list.html', context)
+
+
+@login_required(login_url='staff-login')
+@user_passes_test(is_admin, login_url='staff-login')
 def approve_doctor(request, pk):
     print(pk)
     doctor = Doctor.objects.get(pk=pk)
@@ -93,3 +105,12 @@ def approve_appointment(request, pk):
     appointment.status = True
     appointment.save()
     return redirect('unapproved-appointments')
+
+
+@login_required(login_url='staff-login')
+@user_passes_test(is_admin, login_url='staff-login')
+def approve_patient(request, pk):
+    patient = Patient.objects.get(pk=pk)
+    patient.status = True
+    patient.save()
+    return redirect('unapproved-patients')
