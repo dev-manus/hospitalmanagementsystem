@@ -1,20 +1,76 @@
-{% extends "hospital_management/layout.html" %}
-{% load static %}
-{% load widget_tweaks %}
+{% extends "hospital_management/layout.html" %} {% load static %} {% load
+widget_tweaks %} {% block links %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static '/doctor/css/prescribe.css' %}"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'doctor/css/dashboard.css' %}"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+{% endblock links %} {% block body %}
+<div class="container">
+  <!--
+  <h1>Doctor's dashboard</h1> Doctor's information -->
+  <div class="user">
+    <img class="img" src="{% static 'doctor/Images/sample.png' %}" />
+    <h2 class="name" style="font-family: Product Sans">
+      {{doctor.user.first_name}} {{doctor.user.last_name}}
+    </h2>
+    <p class="type">Department - {{doctor.department}}</p>
+    <p class="type">Tenure - {{doctor.tenure}}</p>
 
-{% block links %}
-<link rel="stylesheet" type="text/css" href="{% static '/doctor/css/prescribe.css' %}" />
-{% endblock links %}
-
-{% block body %}
-<div class="pr-container">
-    <h1>Prescription</h1>
-    <p>Patient Name: {{ appointment.patient_name }}</p>
-    <p>Doctor Name: {{appointment.doctor_name }}</p>
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{prescription_form}}
-        <button>Submit</button>
-    </form>
+    <a class="button" href="/doctor/view-appointments/">View appointments</a>
+    <a class="button" href="/doctor/view-patients/">View patients</a>
+    <button onclick="location.href = '/logout' " class="logout">Logout</button>
+  </div>
+  <div
+    class="
+      d-sm-flex d-md-flex d-lg-flex d-xl-flex d-xxl-flex
+      justify-content-sm-center
+      align-items-sm-center
+      justify-content-md-center
+      align-items-md-center
+      justify-content-lg-center
+      align-items-lg-center
+      justify-content-xl-center
+      align-items-xl-center align-items-xxl-center
+    "
+  >
+    <div
+      class="form-container"
+      style="
+        border-radius: 25px;
+        padding: 30px;
+        box-shadow: 20px 20px 50px grey;
+        margin-left: 50px;
+      "
+    >
+      <h1 class="text-center"><strong>Prescription</strong></h1>
+      <p class="text-center">
+        <strong>Patient Name: {{ appointment.patient_name }}</strong>
+      </p>
+      <p class="text-center">
+        <strong>Doctor Name: {{appointment.doctor_name }}</strong>
+      </p>
+      <form
+        class="text-center"
+        style="border-radius: 25px"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %} {{prescription_form}}
+        <div style="margin-top: 15px">
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  {% endblock body %}
 </div>
-{% endblock body %}
