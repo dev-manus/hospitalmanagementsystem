@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.base import Model
 from doctor.models import Doctor
+import datetime
 
 # Create your models here.
 # CHOICES
@@ -50,7 +51,8 @@ class Appointment(models.Model):
     patient_name = models.CharField(max_length=40, null=True)
     doctor_id = models.PositiveIntegerField(null=True)
     doctor_name = models.CharField(max_length=40, null=True)
-    appointment_date = models.DateField(auto_now=True)
+    appointment_date = models.DateField(default=datetime.date.today)
+    appointment_time = models.TimeField(null=True)
     description = models.TextField(max_length=500)
     status = models.BooleanField(default=False)
 
