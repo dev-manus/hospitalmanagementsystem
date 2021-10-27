@@ -1,17 +1,72 @@
-{% extends "hospital_management/layout.html" %}
-{% load widget_tweaks %}
+{% extends "hospital_management/layout.html" %} 
+{% load static %} 
+{% load widget_tweaks %} 
+{% block links %}
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+/>
+<link rel="stylesheet" href="{% static 'doctor/css/register.css' %}" />
+
+{% endblock %} 
+{% block javascript %} 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js">
+    </script>
+  <script> 
+    function CheckId() {
+        $.get('check_username/'+ $("#id_username").val(),
+            function(data){
+                if(data == "True"){
+                    $('#idval').html("Username already taken");
+                 } else {
+                    $('#idval').html("Available");
+                }
+                var val = data;
+                console.log(val);
+            });
+        }
+            function onChange(){
+             $("#id_username").on("change keyup paste click",function() {CheckId()});
+            }
+        $(document).ready(onChange);
+  </script> 
+{% endblock %} 
 {% block body %}
+<div class="container" id="container">
+    <div class="form-container sign-in-container">
+
+<form
+  method="POST"
+  enctype="multipart/form-data"
+  action="{% url 'doctor-register' %}"
+>
 <h1>Register Doctor</h1>
-<form method="POST" enctype="multipart/form-data" action="{% url 'doctor-register' %}">
-    {% csrf_token %}
-    <div>{% render_field user_form.first_name placeholder="First Name" %}</div>
-    <div>{% render_field user_form.last_name placeholder="Last Name" %}</div>
-    <div>{% render_field user_form.username placeholder="Username" %}</div>
-    <div>{% render_field user_form.password placeholder="password" %}</div>
-    <div>{% render_field doctor_form.address placeholder="Address" %}</div>
-    <div>{% render_field doctor_form.contact_no %}</div>
-    <div>{% render_field doctor_form.sex %}</div>
-    <div>{% render_field doctor_form.department %}</div>
-    <button type="submit">Register</button>
+<span>or <a href="/login">Login</a> to your account</span>
+      <hr>
+
+      {% if message %}
+      <div class="alert alert-danger" role="alert">{{ message }}</div>
+      {% endif %}
+  {% csrf_token %}
+  <div>{% render_field user_form.first_name placeholder="First Name" %}</div>
+  <div>{% render_field user_form.last_name placeholder="Last Name" %}</div>
+  <div>{% render_field user_form.username placeholder="Username" %}</div>
+  <div id="idval"></div>
+  <div>{% render_field user_form.password placeholder="Password" %}</div>
+</div>
+<div class="overlay-container">
+    <div class="overlay">
+      <div class="overlay-panel overlay-right">
+          <hr>
+  <div>{% render_field doctor_form.address placeholder="Address" %}</div>
+  <div>{% render_field doctor_form.contact_no placeholder="Contact no." %}</div>
+  <div>{% render_field doctor_form.sex %}</div>
+  <div>{% render_field doctor_form.department %}</div>
+  <button type="submit" id="ghost" style="margin-top: 15px;">Register</button>
+  </div>
+  </div>
+  </div>
 </form>
+</div>
+<script src="{% static 'hospital_management/js/login2.js' %}"></script>
 {% endblock body %}
