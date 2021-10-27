@@ -1,0 +1,20 @@
+{% extends "hospital_management/layout.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{% static '/doctor/css/prescribe.css' %}" />
+{% endblock links %}
+
+{% block body %}
+<div class="pr-container">
+    <h1>Prescription</h1>
+    <p>Patient Name: {{ appointment.patient_name }}</p>
+    <p>Doctor Name: {{appointment.doctor_name }}</p>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{prescription_form}}
+        <button>Submit</button>
+    </form>
+</div>
+{% endblock body %}

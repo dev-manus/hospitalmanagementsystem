@@ -23,4 +23,5 @@ class BookAppointment(forms.ModelForm):
 
     class Meta:
         model = Appointment
-        fields = ['description', 'status']
+        fields = ['description', 'status',
+                  'appointment_date', 'appointment_time']

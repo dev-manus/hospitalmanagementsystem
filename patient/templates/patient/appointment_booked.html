@@ -1,18 +1,9 @@
-
-
-{% extends "hospital_management/layout.html" %} 
-{% load widget_tweaks %} 
+{% extends "hospital_management/layout.html" %}
+{% load widget_tweaks %}
 {% load static %}
 {% block links %}
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'patient/css/dashboard.css' %}"
-/>
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-/>
+<link rel="stylesheet" type="text/css" href="{% static 'patient/css/dashboard.css' %}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 {% endblock links %} {% block body %}
 <div>
   <div class="container">
@@ -23,10 +14,8 @@
       </h3>
       <h5 class="type">Patient</h5>
       <hr class="line" />
-      <a href = "/patient/profile"><button class="button">Profile</button></a>
-      <a href="/patient/appointment-history"
-        ><button class="button">Appointment History</button></a
-      >
+      <a href="/patient/profile"><button class="button">Profile</button></a>
+      <a href="/patient/appointment-history"><button class="button">Appointment History</button></a>
       <button class="button">Payment</button>
       <button onclick="location.href = '/logout' " class="logout">
         Logout
@@ -39,20 +28,21 @@
       <h4 class="subheading" style="font-family: Product Sans">
         Its Done ! These are the details:
       </h4>
-      <div class = "row" style="padding:50px; margin-top:50px;">
+      <div class="row" style="padding:50px; margin-top:50px;">
         <p><strong>Doctor Name: </strong>{{appointment.doctor_name}}</p>
         <p><strong>Description : </strong>{{appointment.description}}</p>
         <p><strong>Appointment Date: </strong>{{appointment.appointment_date}}</p>
+        <p><strong>Appointment Time: </strong>{{appointment.appointment_time}}</p>
         {% if appointment.status == True %}
         <p><strong>Status</strong> - Booked</p>
         {% else %}
         <p><strong>Status</strong> - Not Booked</p>
         {% endif %}
-    </div>
-    <a href='/patient/dashboard'>Go to dashboard</a>
-    
       </div>
+      <a href='/patient/dashboard'>Go to dashboard</a>
+
     </div>
   </div>
-  {% endblock body %}
+</div>
+{% endblock body %}
 </div>
