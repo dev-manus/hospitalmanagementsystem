@@ -1,0 +1,20 @@
+{% extends "hospital_management/layout.html" %}
+{% load static %}
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{% static 'staff/css/doctorlist.css' %}" />
+{% endblock links %}
+
+{% block body %}
+<div class="container">
+    <h1>Unapproved Doctors</h1>
+    {% for d in doctors %}
+    <div class="doctor-card">
+        <h2>{{d.user.first_name}} {{d.user.last_name}}</h2>
+        <p><strong>Department</strong>: {{d.department}}</p>
+        <p><strong>Tenure</strong>: {{d.tenure}}</p>
+        <a href="/staff/delete-doctor/{{ d.pk }}"><button
+                style="background-color: red; color: white">Delete</button></a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock body %}

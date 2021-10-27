@@ -1,0 +1,44 @@
+{% extends "hospital_management/layout.html" %}
+{% load static %}
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{% static 'staff/css/doctorlist.css' %}" />
+{% endblock links %}
+
+{% block body %}
+<div class="container">
+    <h1>Bill</h1>
+    {% for b in bills %}
+    <div class="doctor-card">
+        <p><strong>Patient Name:</strong>{{b.patient_name}}</p>
+        <p><strong>Doctor Name:</strong>{{b.doctor_name}}</p>
+        <p><strong>Admit Date:</strong>{{b.admitDate}}</p>
+        <p><strong>Release Date:</strong>{{b.releaseDate}}</p>
+        <table>
+            <tr>
+                <th>Type</th>
+                <th>Charge</th>
+            </tr>
+            <tr>
+                <td>Room</td>
+                <td>{{b.room_charge}}</td>
+            </tr>
+            <tr>
+                <td>Medicine</td>
+                <td>{{b.medicine_charge}}</td>
+            </tr>
+            <tr>
+                <td>Doctor</td>
+                <td>{{b.doctor_charge}}</td>
+            </tr>
+            <tr>
+                <td>Other</td>
+                <td>{{b.other_charge}}</td>
+            </tr>
+        </table>
+        <hr>
+        <br /><br />
+        <h4><strong>Total Charge: </strong>{{b.total_charge}}</h4>
+    </div>
+    {% endfor %}
+</div>
+{% endblock body %}

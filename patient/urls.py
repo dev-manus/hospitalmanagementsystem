@@ -15,5 +15,6 @@ urlpatterns = [
     path('register/check_username/<usr>',
          check_username, name='check_username'),
     path('view-prescriptions/', get_prescriptions, name='view-prescriptions'),
-    path('profile/', view_profile, name="view_profile")
+    path('profile/', view_profile, name="view_profile"),
+    path('bills/', get_bill, name='get-bill')
 ]

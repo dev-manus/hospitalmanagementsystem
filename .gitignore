@@ -11,3 +11,6 @@ Screenshots/
 
 runserver
 hospital_management/credentials.py
+
+# Database
+db.sqlite3
