@@ -3,33 +3,35 @@
 
 {% block links %}
 <link rel="stylesheet" type="text/css" href="{% static 'doctor/css/dashboard.css' %}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock links %}
 
 {% block body %}
-<div class="doctor-dashboard">
-    <h1>Doctor's dashboard</h1>
-    <!-- Doctor's information -->
-    <div>
-        <h2>{{doctor.user.first_name}} {{doctor.user.last_name}}</h2>
-        <p>Department - {{doctor.department}}</p>
-        <p>Tenure - {{doctor.tenure}}</p>
+<div class="container">
+    <!--
+    <h1>Doctor's dashboard</h1> Doctor's information -->
+    <div class="user">
+        <img class="img" src="{% static 'doctor/Images/sample.png' %}" />
+        <h2 class="name" style="font-family : Product Sans;">{{doctor.user.first_name}} {{doctor.user.last_name}}</h2>
+        <p class="type">Department - {{doctor.department}}</p>
+        <p class="type">Tenure - {{doctor.tenure}}</p>
 
-        <div>
-            <a href='/doctor/view-appointments/'>View appointments</a><br />
-            <a href='/doctor/view-patients/'>View patients</a><br />
-            <button onclick="location.href = '/logout' " class="logout">Logout</button>
-        </div>
+        <a class="button" href='/doctor/view-appointments/'>View appointments</a>
+        <a class="button" href='/doctor/view-patients/'>View patients</a>
+        <button onclick="location.href = '/logout' " class="logout">Logout</button>
+        
     </div>
-    <div>
+    <div class="welcome">
         <!-- Welcome text -->
-        <h1>Welcome Dr. {{doctor.user.first_name}}</h1>
+        <h1 class="heading" style="font-family : Product Sans;">Welcome Dr. {{doctor.user.first_name}}</h1>
         <!-- View appointments -->
-        <div>
-            <a href="/doctor/view-appointments/">View Appointments</a>
+        <div class="optiondiv">
+            <a class="option1" href="/doctor/view-appointments/"><i class="fa fa-calendar"
+                style="font-size: 50px;"></i><br />View Appointments</a>
         </div>
         <!-- Statistics -->
         <div>
-            <h1>Statistics</h1>
+            <h1 class="heading">Statistics</h1>
             <table>
                 <tr>
                     <td>Appointments</td>
@@ -41,7 +43,7 @@
                 </tr>
             </table>
 
-            <h1>Appointment Statistics</h1>
+            <h1 class="heading">Appointment Statistics</h1>
             <table>
                 <tr>
                     <th>Patient</th>
