@@ -65,10 +65,12 @@ def doctor_dashboard(request):
 @login_required(login_url='doctor-login')
 @user_passes_test(is_doctor, login_url='doctor-login')
 def view_appointments(request):
+    doctor = Doctor.objects.get(user_id=request.user.id)
     appointments = Appointment.objects.all().filter(
         doctor_id=request.user.id).filter(status=True).filter(prescribed=False)
     view_context = {
-        'appointments': appointments
+        'appointments': appointments,
+        'doctor' : doctor
     }
     return render(request, 'doctor/view_appointments.html', context=view_context)
 
@@ -79,7 +81,8 @@ def view_patients(request):
     doctor = Doctor.objects.get(user_id=request.user.id)
     patients = Patient.objects.all().filter(department=doctor.department)
     view_context = {
-        'patients': patients
+        'patients': patients,
+        'doctor' : doctor
     }
     return render(request, 'doctor/patient_list.html', context=view_context)
 

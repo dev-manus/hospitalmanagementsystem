@@ -1,18 +1,36 @@
 {% extends "hospital_management/layout.html" %}
 {% load static %}
+
 {% block links %}
 <link rel="stylesheet" type="text/css" href="{% static 'staff/css/doctorlist.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'doctor/css/dashboard.css' %}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock links %}
 
 {% block body %}
 <div class="container">
-    <h1>Patients</h1>
-    {% for p in patients %}
-    <div class="doctor-card">
-        <p><strong>Patient name</strong>: {{p.user.first_name}} {{p.user.last_name}}</p>
-        <p><strong>Address</strong>: {{p.address}}</p>
-        <p><strong>Contact No.</strong>: {{p.contact_no}}</p>
+    <!--
+    <h1>Doctor's dashboard</h1> Doctor's information -->
+    <div class="user">
+        <img class="img" src="{% static 'doctor/Images/sample.png' %}" />
+        <h2 class="name" style="font-family : Product Sans;">{{doctor.user.first_name}} {{doctor.user.last_name}}</h2>
+        <p class="type">Department - {{doctor.department}}</p>
+        <p class="type">Tenure - {{doctor.tenure}}</p>
+
+        <a class="button" href='/doctor/view-appointments/'>View appointments</a>
+        <a class="button" href='/doctor/view-patients/'>View patients</a>
+        <button onclick="location.href = '/logout' " class="logout">Logout</button>
+        
     </div>
-    {% endfor %}
+    <div class="welcome">
+        <h1>Patients</h1>
+        {% for p in patients %}
+        <div class="doctor-card">
+            <p><strong>Patient name</strong>: {{p.user.first_name}} {{p.user.last_name}}</p>
+            <p><strong>Address</strong>: {{p.address}}</p>
+            <p><strong>Contact No.</strong>: {{p.contact_no}}</p>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock body %}

@@ -1,19 +1,42 @@
+
 {% extends "hospital_management/layout.html" %}
 {% load static %}
+
 {% block links %}
-<link rel="stylesheet" type="text/css" href="{% static 'staff/css/doctorlist.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'doctor/css/dashboard.css' %}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock links %}
 
 {% block body %}
 <div class="container">
-    <h1>Appointments</h1>
-    {% for a in appointments %}
-    <div class="doctor-card">
-        <p><strong>Patient name</strong>: {{a.patient_name}}</p>
-        <p><strong>Appointment Date: </strong>{{a.appointment_date}}</p>
-        <p><strong>Description</strong>: {{a.description}}</p>
-        <a href="/doctor/prescribe/{{a.pk}}"><button>Prescribe</button></a>
+    <!--
+    <h1>Doctor's dashboard</h1> Doctor's information -->
+    <div class="user">
+        <img class="img" src="{% static 'doctor/Images/sample.png' %}" />
+        <h2 class="name" style="font-family : Product Sans;">{{doctor.user.first_name}} {{doctor.user.last_name}}</h2>
+        <p class="type">Department - {{doctor.department}}</p>
+        <p class="type">Tenure - {{doctor.tenure}}</p>
+
+        <a class="button" href='/doctor/view-appointments/'>View appointments</a>
+        <a class="button" href='/doctor/view-patients/'>View patients</a>
+        <button onclick="location.href = '/logout' " class="logout">Logout</button>
+        
     </div>
-    {% endfor %}
+    <div class="welcome">
+
+        
+        <h1>Unapproved Appointments</h1>
+        <h4 class="subheading" style="font-family: Product Sans">
+            Appointments yet to be approved by the management 
+          </h4>
+          <hr>
+        {% for appointment in appointments %}
+        <div class="doctor-card">
+            <p><strong>Patient name</strong>: {{appointment.patient_name}}</p>
+            <p><strong>Doctor name</strong>: {{appointment.doctor_name}}</p>
+            <p><strong>Description</strong>: {{appointment.description}}</p>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock body %}
