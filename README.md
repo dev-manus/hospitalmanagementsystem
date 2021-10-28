@@ -60,3 +60,27 @@ Folder | Content | Responsability
 ![sqlite](https://github.com/dev-manus/hospitalmanagementsystem/blob/master/readme_photos/database.png)
 
 ### Databse Schema
+
+### Images
+* Home
+![](https://github.com/dev-manus/hospitalmanagementsystem/blob/master/Images/Home.png)
+* Login Page
+![](https://github.com/dev-manus/hospitalmanagementsystem/blob/master/Images/Login.png)
+* Patient Dashboard
+![](https://github.com/dev-manus/hospitalmanagementsystem/blob/master/Images/Patient%20Dashboard.png)
+* Doctor Dashboard
+![](https://github.com/dev-manus/hospitalmanagementsystem/blob/master/Images/Doctor%20Dahsboard.png)
+* Staff Dashboard
+![](https://github.com/dev-manus/hospitalmanagementsystem/blob/master/Images/Staff%20Dashboard.png)
+* Book Appointment
+![](https://github.com/dev-manus/hospitalmanagementsystem/blob/master/Images/Appointment%20Booking%20Form.png)
+* Appointment Booked Acknowledgement
+![](https://github.com/dev-manus/hospitalmanagementsystem/blob/master/Images/Appointment%20Acknowledgement.png)
+* Prescription Form
+![](https://github.com/dev-manus/hospitalmanagementsystem/blob/master/Images/Prescription.png)
+* Generate Bill form
+![](https://github.com/dev-manus/hospitalmanagementsystem/blob/master/Images/Admin%20Generate%20Bill.png)
+* Doctor's Appointment Page
+![](https://github.com/dev-manus/hospitalmanagementsystem/blob/master/Images/Doctor%20Appointments.png)
+* Patient Bill
+![](https://github.com/dev-manus/hospitalmanagementsystem/blob/master/Images/Patient%20Bill.png)
