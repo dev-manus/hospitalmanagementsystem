@@ -22,8 +22,11 @@
             function(data){
                 if(data == "True"){
                     $('#idval').html("Username already taken");
+                    document.getElementById("ghost"). disabled = true;
+                    document.getElementById("ghost"). style.color = "grey";
                  } else {
                     $('#idval').html("Available");
+                    document.getElementById("ghost"). disabled = false;
                 }
                 var val = data;
                 console.log(val);
@@ -50,9 +53,7 @@
         <span>or <a href="/login">Login</a> to your account</span>
         <hr>
   
-        {% if message %}
-        <div class="alert alert-danger" role="alert">{{ message }}</div>
-        {% endif %}
+
   
           {% csrf_token %}
           <div>{% render_field form.first_name placeholder="First Name" %}</div>
@@ -66,6 +67,9 @@
       <div class="overlay">
         <div class="overlay-panel overlay-right">
           <hr>
+          {% if message %}
+          <div class="alert alert-danger" role="alert">{{ message }}</div>
+          {% endif %}
           <div>{% render_field form.username placeholder="Username" %}</div>
         <div id="idval"></div>
         <div >{% render_field form.password placeholder="Password" type="password" %}</div>

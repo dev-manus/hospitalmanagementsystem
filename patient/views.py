@@ -96,11 +96,13 @@ def appointment_booked(request):
 @login_required(login_url='patient-login')
 @user_passes_test(is_patient, login_url='patient-login')
 def appointment_history(request):
+    patient = Patient.objects.get(user_id=request.user.id)
     appointments = Appointment.objects.all().filter(
         patient_id=request.user.id).filter(status=True)
 
     view_context = {
-        'appointments': appointments
+        'appointments': appointments,
+        'patient' : patient,
     }
     return render(request, 'patient/appointment_history.html', context=view_context)
 

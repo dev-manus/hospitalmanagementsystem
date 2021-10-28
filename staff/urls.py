@@ -1,6 +1,7 @@
 from django.contrib.auth.views import LoginView
 from django.urls import path
 from .views import *
+from patient.views import check_username
 
 urlpatterns = [
     path('dashboard/', staff_dashboard, name='staff-dashboard'),
@@ -15,5 +16,6 @@ urlpatterns = [
     path('approve-doctor/<int:pk>', approve_doctor, name='approve-doctor'),
     path('approve-appointment/<int:pk>',
          approve_appointment, name='approve-appointment'),
-    path('approve-patient/<int:pk>', approve_patient, name='approve-patient')
+    path('approve-patient/<int:pk>', approve_patient, name='approve-patient'),
+        path('register/check_username/<usr>',check_username, name='check_username'),
 ]

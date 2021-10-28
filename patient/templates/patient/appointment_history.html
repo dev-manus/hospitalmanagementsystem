@@ -1,18 +1,64 @@
-{% extends "hospital_management/layout.html" %}
+
+{% extends "hospital_management/layout.html" %} 
+{% load widget_tweaks %} 
 {% load static %}
 {% block links %}
-<link rel="stylesheet" type="text/css" href="{% static 'staff/css/doctorlist.css' %}" />
-{% endblock links %}
 
-{% block body %}
-<div class="container">
-    <h1>Unapproved Appointments</h1>
-    {% for a in appointments %}
-    <div class="doctor-card">
-        <p><strong>Patient name</strong>: {{a.patient_name}}</p>
-        <p><strong>Doctor name</strong>: {{a.doctor_name}}</p>
-        <p><strong>Description</strong>: {{a.description}}</p>
+<link rel="stylesheet" type="text/css" href="{% static 'staff/css/doctorlist.css' %}" />
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'patient/css/dashboard.css' %}"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+{% endblock links %} {% block body %}
+<div>
+  <div class="container">
+    <div class="user">
+        
+      <img class="img" src="{% static 'patient/Images/sample.png' %}" />
+      <a href="/patient/dashboard">
+      <h3 class="name" style="font-family: Product Sans; color: black "">
+        {{patient.user.first_name}} {{patient.user.last_name}}
+      </h3>
+    </a>
+      <h5 class="type">Patient</h5>
+      
+      <hr class="line" />
+      <a href="/patient/dashboard"
+        ><button class="button">Dashboard</button></a
+      >
+      <button class="button active">Profile</button>
+      <a href="/patient/appointment-history"
+        ><button class="button">Appointment History</button></a
+      >
+      <button class="button">Payment</button>
+      <a href="/logout"><button class="logout">
+        Logout
+      </button></a>
     </div>
-    {% endfor %}
+    <div class="welcome">
+
+      <div class="">
+        <h1>Unapproved Appointments</h1>
+        <h4 class="subheading" style="font-family: Product Sans">
+            Appointments yet to be approved by the management 
+          </h4>
+          <hr>
+        {% for appointment in appointments %}
+        <div class="doctor-card">
+            <p><strong>Patient name</strong>: {{appointment.patient_name}}</p>
+            <p><strong>Doctor name</strong>: {{appointment.doctor_name}}</p>
+            <p><strong>Description</strong>: {{appointment.description}}</p>
+        </div>
+        {% endfor %}
+    </div>
+    
+      </div>
+    </div>
+  </div>
+  {% endblock body %}
 </div>
-{% endblock body %}
