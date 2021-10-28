@@ -1,13 +1,14 @@
 {% extends "hospital_management/layout.html" %}
 {% block body %}
 {%include "staff/admin_dashboard_cards.html" %}
-<br><br><br><br>
+<br><br><br>
 <div class="container">
-    <div>
-        <a href="/staff/appointments"><button>View Appointments</button></a>
-        <a href="/staff/doctors"><button>View doctors</button></a>
-        <a href="/staff/patients"><button>View Patients</button></a>
+    <div style="padding-left: 40vh;">
+        <a class="btn btn-primary" href="/staff/appointments" role="button" style="margin-right: 60px;padding: 10px;"> <strong>View Appointments</strong></a>
+        <a role="button" class="btn btn-primary" href="/staff/doctors" style="margin-right: 60px;padding: 10px"><strong>View doctors </strong></a>
+        <a role="button" class="btn btn-primary" href="/staff/patients" style="padding: 10px"><strong>View Patients </strong></a>
     </div>
+    <br><br>
     <div class="row">
         <div class="panel panel-primary col-md-5" style="margin-left:2%;">
             <div class="panel-heading" style="text-align:center;">
