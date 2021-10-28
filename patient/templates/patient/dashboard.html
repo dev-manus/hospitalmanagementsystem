@@ -16,7 +16,7 @@
             <a href="/patient/profile"> <button class="button">Profile</button></a>
             <a href='/patient/appointment-history'><button class="button">Appointment History</button></a>
             <a href='/patient/view-prescriptions'><button class="button">View Prescriptions</button></a>
-            <button class="button">Payment</button>
+            <a href='/patient/bills'><button class="button">Payment</button></a>
             <button onclick="location.href = '/logout' " class="logout">Logout</button>
         </div>
         <div class="welcome">
@@ -27,9 +27,10 @@
                             style="font-size: 50px;"></i><br /><br />Book an appointment</button></a>
                 <a href='/patient/get-doctors'><button class="option2"><i class="fa fa-search"
                             style="font-size: 50px;"></i><br /><br />Find doctors</button></a>
-                <button class="option3"><i class="fa fa-pencil" style="font-size: 50px;"></i><br /><br />Book a Test</button>
+                <button class="option3"><i class="fa fa-pencil" style="font-size: 50px;"></i><br /><br />Book a
+                    Test</button>
             </div>
         </div>
     </div>
 </div>
-    {% endblock body %}
+{% endblock body %}

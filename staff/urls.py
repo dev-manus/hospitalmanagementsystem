@@ -17,5 +17,13 @@ urlpatterns = [
     path('approve-appointment/<int:pk>',
          approve_appointment, name='approve-appointment'),
     path('approve-patient/<int:pk>', approve_patient, name='approve-patient'),
-        path('register/check_username/<usr>',check_username, name='check_username'),
+    path('register/check_username/<usr>',check_username, name='check_username'),
+    path('appointments', staff_appointment_view, name='appointment-view'),
+    path('generate-bill/<int:pk>', generate_bill, name='generate-bill'),
+    path('doctors/', get_approved_doctors, name='approved-doctors'),
+    path('patients/', get_approved_patients, name='approved-patients'),
+    path('delete-doctor/<int:pk>', delete_doctor, name='delete-doctor'),
+    path('delete-patient/<int:pk>', delete_patient, name='delete-patient'),
+    path('delete-appointment/<int:pk>',
+         delete_appointments, name='delete-appointment')
 ]

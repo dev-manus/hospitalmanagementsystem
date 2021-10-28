@@ -131,7 +131,18 @@ def get_prescriptions(request):
     return render(request, 'patient/prescriptions.html', context=view_context)
 
 
+@login_required(login_url='login')
+@user_passes_test(is_patient, login_url='login')
+def get_bill(request):
+    bills = DischargeDetails.objects.all().filter(patient=request.user.id)
+    view_context = {
+        'bills': bills
+    }
+    return render(request, 'patient/bills.html', context=view_context)
+
 # Utility functions
+
+
 def check_username(request, usr):
     username_exists = User.objects.filter(username__iexact=usr).exists()
     return HttpResponse(username_exists)

@@ -1,0 +1,15 @@
+{% extends 'hospital_management/layout.html' %}
+{% load widget_tweaks %}
+
+{% block body %}
+<form enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    {% render_field discharge_form.admitDate type="date" %}
+    {% render_field discharge_form.releaseDate type="date" %}
+    {% render_field discharge_form.room_charge type="number" %}
+    {% render_field discharge_form.medicine_charge type="number" %}
+    {% render_field discharge_form.doctor_charge type="number" %}
+    {% render_field discharge_form.other_charge type="number" %}
+    <button>Submit</button>
+</form>
+{% endblock body %}

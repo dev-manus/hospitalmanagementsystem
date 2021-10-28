@@ -106,6 +106,5 @@ def prescribe(request, pk):
             prescription.doctor_name = appointment.doctor_name
 
             prescription.save()
-            appointment.delete()
         return redirect('view-appointments')
     return render(request, 'doctor/prescribe.html', context=view_context)
