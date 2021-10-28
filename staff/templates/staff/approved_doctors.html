@@ -6,12 +6,15 @@
 
 {% block body %}
 <div class="container">
-    <h1>Unapproved Doctors</h1>
+    <h1>Doctors</h1>
     {% for d in doctors %}
     <div class="doctor-card">
         <h2>{{d.user.first_name}} {{d.user.last_name}}</h2>
         <p><strong>Department</strong>: {{d.department}}</p>
+        <p><strong>Address</strong>: {{d.address}}</p>
+        <p><strong>Contact Number</strong>: {{d.contact_no}}</p>
         <p><strong>Tenure</strong>: {{d.tenure}}</p>
+        <p><strong>Gender</strong>: {{d.sex}}</p>
         <a href="/staff/delete-doctor/{{ d.pk }}"><button
                 style="background-color: red; color: white">Delete</button></a>
     </div>

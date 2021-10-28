@@ -2,8 +2,7 @@
 {% load widget_tweaks %}
 
 {% block body %}
-<div
-    class="
+<div class="
       d-sm-flex d-md-flex d-lg-flex d-xl-flex d-xxl-flex
       justify-content-sm-center
       align-items-sm-center
@@ -13,37 +12,34 @@
       align-items-lg-center
       justify-content-xl-center
       align-items-xl-center align-items-xxl-center
-    "
-  >
-  <div
-      class="form-container"
-      style="
+    ">
+  <div class="form-container" style="
         border-radius: 25px;
         padding: 30px;
         box-shadow: 20px 20px 50px grey;
         margin-left: 50px;
-      "
-    >
+      ">
     <h1 class="text-center"><strong>Generate Bill</strong></h1>
-      <p class="text-center">
-        <strong>Patient Name: Dummy</strong>
-      </p>
-      <p class="text-center">
-        <strong>Doctor Name: Dr.Dummy</strong>
-      </p>
-      
-<form class="text-center" enctype="multipart/form-data" method="POST">
-    {% csrf_token %}
-    <div class="mb-3">Admit Date: {% render_field discharge_form.admitDate  type="date" %}</div>
-    <div class="mb-3">Discharge Date: {% render_field discharge_form.releaseDate type="date" %}</div>
-    <div class="mb-3">{% render_field discharge_form.room_charge  type="number" placeholder="Room Charges" %}</div>
-    <div class="mb-3">{% render_field discharge_form.medicine_charge type="number" placeholder="Medicine Charges" %}</div>
-    <div class="mb-3">{% render_field discharge_form.doctor_charge type="number" placeholder="Doctor Charges" %}</div>
-    <div class="mb-3">{% render_field discharge_form.other_charge type="number" placeholder="Other Charges" %}</div>
-    <div style="margin-top: 15px">
+    <p class="text-center">
+      <strong>Patient Name: {{ patient_name }}</strong>
+    </p>
+    <p class="text-center">
+      <strong>Doctor Name: Dr. {{ doctor_name }}</strong>
+    </p>
+
+    <form class="text-center" enctype="multipart/form-data" method="POST">
+      {% csrf_token %}
+      <div class="mb-3">Admit Date: {% render_field discharge_form.admitDate type="date" %}</div>
+      <div class="mb-3">Discharge Date: {% render_field discharge_form.releaseDate type="date" %}</div>
+      <div class="mb-3">{% render_field discharge_form.room_charge type="number" placeholder="Room Charges" %}</div>
+      <div class="mb-3">{% render_field discharge_form.medicine_charge type="number" placeholder="Medicine Charges" %}
+      </div>
+      <div class="mb-3">{% render_field discharge_form.doctor_charge type="number" placeholder="Doctor Charges" %}</div>
+      <div class="mb-3">{% render_field discharge_form.other_charge type="number" placeholder="Other Charges" %}</div>
+      <div style="margin-top: 15px">
         <button class="btn btn-primary" type="submit">Submit</button>
       </div>
-</form>
-</div>
+    </form>
+  </div>
 </div>
 {% endblock body %}

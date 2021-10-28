@@ -44,7 +44,8 @@ def doctor_register(request):
 @user_passes_test(is_doctor, login_url='doctor-login')
 def doctor_dashboard(request):
     doctor = Doctor.objects.get(user_id=request.user.id)
-    appointments = Appointment.objects.filter(doctor_id=request.user.id)
+    appointments = Appointment.objects.filter(
+        doctor_id=request.user.id).filter(prescribed=False)
     patients = Patient.objects.all()
 
     appointment_count = len(appointments)
@@ -65,7 +66,7 @@ def doctor_dashboard(request):
 @user_passes_test(is_doctor, login_url='doctor-login')
 def view_appointments(request):
     appointments = Appointment.objects.all().filter(
-        doctor_id=request.user.id).filter(status=True)
+        doctor_id=request.user.id).filter(status=True).filter(prescribed=False)
     view_context = {
         'appointments': appointments
     }
@@ -104,7 +105,9 @@ def prescribe(request, pk):
             prescription.patient_name = appointment.patient_name
             prescription.doctor_id = appointment.doctor_id
             prescription.doctor_name = appointment.doctor_name
+            appointment.prescribed = True
 
+            appointment.save()
             prescription.save()
         return redirect('view-appointments')
     return render(request, 'doctor/prescribe.html', context=view_context)

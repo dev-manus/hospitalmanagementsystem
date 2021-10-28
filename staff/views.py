@@ -120,7 +120,7 @@ def approve_patient(request, pk):
 @login_required(login_url='staff-login')
 @user_passes_test(is_admin, login_url='staff-login')
 def staff_appointment_view(request):
-    appointments = Appointment.objects.all().filter(status=True)
+    appointments = Appointment.objects.all().filter(status=True).filter(paid=False)
     context = {
         'appointments': appointments
     }
@@ -137,7 +137,9 @@ def generate_bill(request, pk):
     doctor_id = appointment.doctor_id
     discharge_form = DischargeForm()
     context = {
-        'discharge_form': discharge_form
+        'discharge_form': discharge_form,
+        'patient_name': appointment.patient_name,
+        'doctor_name': appointment.doctor_name
     }
 
     if request.method == 'POST':
@@ -151,6 +153,9 @@ def generate_bill(request, pk):
             discharge.doctor_name = appointment.doctor_name
             discharge.total_charge = discharge.room_charge + discharge.medicine_charge + \
                 discharge.doctor_charge + discharge.other_charge
+            appointment.paid = True
+
+            appointment.save()
             discharge.save()
         return redirect('staff-dashboard')
     return render(request, 'staff/discharge_form.html', context)

@@ -60,9 +60,3 @@ Folder | Content | Responsability
 ![sqlite](https://github.com/dev-manus/hospitalmanagementsystem/blob/master/readme_photos/database.png)
 
 ### Databse Schema
-
-
-
-
-
-
