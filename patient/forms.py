@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.forms import fields
 from doctor.models import Doctor
-from .models import Appointment, Patient
+from .models import Appointment, Patient, DischargeDetails
 
 
 class PatientUserForm(forms.ModelForm):
@@ -25,3 +25,10 @@ class BookAppointment(forms.ModelForm):
         model = Appointment
         fields = ['description', 'status',
                   'appointment_date', 'appointment_time']
+
+
+class DischargeForm(forms.ModelForm):
+    class Meta:
+        model = DischargeDetails
+        fields = ['admitDate', 'releaseDate', 'room_charge',
+                  'medicine_charge', 'doctor_charge', 'other_charge']

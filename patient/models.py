@@ -62,8 +62,10 @@ class Appointment(models.Model):
 
 # Discharge details model
 class DischargeDetails(models.Model):
-    patient = models.OneToOneField(Patient, on_delete=models.DO_NOTHING)
-    doctor = models.OneToOneField(Doctor, on_delete=models.DO_NOTHING)
+    patient = models.PositiveIntegerField(null=False)
+    doctor = models.PositiveIntegerField(null=False)
+    patient_name = models.CharField(max_length=100, default='User')
+    doctor_name = models.CharField(max_length=100, default='User')
     admitDate = models.DateField(null=False)
     releaseDate = models.DateField(null=False)
     room_charge = models.PositiveIntegerField(null=False)

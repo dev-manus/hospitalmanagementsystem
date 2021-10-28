@@ -8,6 +8,7 @@ from patient.models import Appointment, Patient
 from .forms import StaffRegistrationForm
 from django.contrib.auth.models import User
 from django.urls import reverse
+from patient.forms import DischargeForm
 
 
 def is_admin(user):
@@ -114,3 +115,85 @@ def approve_patient(request, pk):
     patient.status = True
     patient.save()
     return redirect('unapproved-patients')
+
+
+@login_required(login_url='staff-login')
+@user_passes_test(is_admin, login_url='staff-login')
+def staff_appointment_view(request):
+    appointments = Appointment.objects.all().filter(status=True)
+    context = {
+        'appointments': appointments
+    }
+    return render(request, 'staff/approved_appointments.html', context)
+
+# Generate bill
+
+
+@login_required(login_url='staff-login')
+@user_passes_test(is_admin, login_url='staff-login')
+def generate_bill(request, pk):
+    appointment = Appointment.objects.get(pk=pk)
+    patient_id = appointment.patient_id
+    doctor_id = appointment.doctor_id
+    discharge_form = DischargeForm()
+    context = {
+        'discharge_form': discharge_form
+    }
+
+    if request.method == 'POST':
+        discharge_form = DischargeForm(request.POST)
+
+        if discharge_form.is_valid():
+            discharge = discharge_form.save(commit=False)
+            discharge.doctor = doctor_id
+            discharge.patient = patient_id
+            discharge.patient_name = appointment.patient_name
+            discharge.doctor_name = appointment.doctor_name
+            discharge.total_charge = discharge.room_charge + discharge.medicine_charge + \
+                discharge.doctor_charge + discharge.other_charge
+            discharge.save()
+        return redirect('staff-dashboard')
+    return render(request, 'staff/discharge_form.html', context)
+
+
+@login_required(login_url='staff-login')
+@user_passes_test(is_admin, login_url='staff-login')
+def get_approved_doctors(request):
+    doctors = Doctor.objects.all().filter(status=True)
+    context = {
+        'doctors': doctors
+    }
+    return render(request, 'staff/approved_doctors.html', context)
+
+# Delete appointments
+
+
+@login_required(login_url='staff-login')
+@user_passes_test(is_admin, login_url='staff-login')
+def delete_appointments(request, pk):
+    Appointment.objects.get(pk=pk).delete()
+    return redirect('appointment-view')
+
+
+@login_required(login_url='staff-login')
+@user_passes_test(is_admin, login_url='staff-login')
+def delete_doctor(request, pk):
+    Doctor.objects.get(pk=pk).delete()
+    return redirect('approved-doctors')
+
+
+@login_required(login_url='staff-login')
+@user_passes_test(is_admin, login_url='staff-login')
+def delete_patient(request, pk):
+    Patient.objects.get(pk=pk).delete()
+    return redirect('approved-patients')
+
+
+@login_required(login_url='staff-login')
+@user_passes_test(is_admin, login_url='staff-login')
+def get_approved_patients(request):
+    patients = Patient.objects.all().filter(status=True)
+    context = {
+        'patients': patients
+    }
+    return render(request, 'staff/approved_patients.html', context)
