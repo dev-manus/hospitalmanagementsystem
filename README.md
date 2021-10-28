@@ -51,13 +51,13 @@ Folder | Content | Responsability
 # Technologies
 
 ### Backend
-![Django]
+![Django](https://github.com/dev-manus/hospitalmanagementsystem/blob/master/readme_photos/pydjango.png)
 
 ### Frontend
-![HTML CSS jQuery]
+![HTML CSS jQuery](https://github.com/dev-manus/hospitalmanagementsystem/blob/master/readme_photos/frontend.jpg)
 
 ### Database
-![sqlite]
+![sqlite](https://github.com/dev-manus/hospitalmanagementsystem/blob/master/readme_photos/database.png)
 
 ### Databse Schema
 
