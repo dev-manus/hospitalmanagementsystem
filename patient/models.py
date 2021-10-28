@@ -55,6 +55,8 @@ class Appointment(models.Model):
     appointment_time = models.TimeField(null=True)
     description = models.TextField(max_length=500)
     status = models.BooleanField(default=False)
+    prescribed = models.BooleanField(default=False)
+    paid = models.BooleanField(default=False)
 
     def __str__(self):
         return f'Patient: {self.patient_id} Doctor: {self.doctor_id}'
